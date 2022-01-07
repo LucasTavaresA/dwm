@@ -93,30 +93,27 @@ static const Layout layouts[] = {
 /* aplicações */
 static const char *st[]              = { "st",                                    NULL };
 
-static Key keys[] = {
+/* Atalhos configurados usando sxhkd */
+static Key keys[] = { 
 	/* modifier           key             function          argument */
-	{ MODKEY|ShiftMask,   XK_Return,      spawn,            {.v = st } },
-	{ MODKEY,             XK_backslash,   togglescratch,    {.ui = 0 } },
-	{ MODKEY,             XK_t,           togglefloating,   {0} },
-    { MODKEY,             XK_Tab,         focusstack,       {.i = +1 } },
-    { MODKEY,             XK_Right,       focusstack,       {.i = +1 } },
-    { MODKEY,             XK_Left,        focusstack,       {.i = -1 } },
-	{ Mod1Mask,           XK_Down,        setcfact,         {.f = +0.25} },
-	{ Mod1Mask,           XK_Up,          setcfact,         {.f = -0.25} },
-	{ Mod1Mask,           XK_Left,        setmfact,         {.f = -0.05} },
-	{ Mod1Mask,           XK_Right,       setmfact,         {.f = +0.05} },
-    { MODKEY,             XK_Return,      zoom,             {0} },
-	{ ShiftMask,          XK_Menu,        killclient,       {0} },
-	{ Mod1Mask,           XK_Tab,      layoutscroll,     {.i = +1 } },
-	{ MODKEY,             XK_Right,       viewnext,         {0} },
-	{ MODKEY,             XK_Left,        viewprev,         {0} },
-	{ MODKEY|ShiftMask,   XK_Right,       tagtonext,        {0} },
-	{ MODKEY|ShiftMask,   XK_Left,        tagtoprev,        {0} },
-	{ MODKEY,             XK_0,           view,             {.ui = ~0 } },
-	{ MODKEY|ShiftMask,   XK_0,           tag,              {.ui = ~0 } },
-	TAGKEYS(              XK_1,                      0)
-	TAGKEYS(              XK_2,                      1)
-	TAGKEYS(              XK_3,                      2)
+    { MODKEY|ShiftMask|ControlMask,   XK_b,      spawn,            {.v = st } },
+	/* { MODKEY,             XK_backslash,   togglescratch,    {.ui = 0 } }, */
+	/* { MODKEY,             XK_t,           togglefloating,   {0} }, */
+    /* { MODKEY,             XK_Tab,         focusstack,       {.i = +1 } }, */
+    /* { MODKEY,             XK_Right,       focusstack,       {.i = +1 } }, */
+    /* { MODKEY,             XK_Left,        focusstack,       {.i = -1 } }, */
+	/* { Mod1Mask,           XK_Down,        setcfact,         {.f = +0.25} }, */
+	/* { Mod1Mask,           XK_Up,          setcfact,         {.f = -0.25} }, */
+	/* { Mod1Mask,           XK_Left,        setmfact,         {.f = -0.05} }, */
+	/* { Mod1Mask,           XK_Right,       setmfact,         {.f = +0.05} }, */
+    /* { MODKEY,             XK_Return,      zoom,             {0} }, */
+	/* { ShiftMask,          XK_Menu,        killclient,       {0} }, */
+	/* { MODKEY,             XK_Escape,      layoutscroll,     {.i = +1 } }, */
+	/* { MODKEY,             XK_0,           view,             {.ui = ~0 } }, */
+	/* { MODKEY|ShiftMask,   XK_0,           tag,              {.ui = ~0 } }, */
+	/* TAGKEYS(              XK_1,                      0) */
+	/* TAGKEYS(              XK_2,                      1) */
+	/* TAGKEYS(              XK_3,                      2) */
 };
 
 /* button definitions */
@@ -135,3 +132,71 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
 
+void
+setlayoutex(const Arg *arg)
+{
+	setlayout(&((Arg) { .v = &layouts[arg->i] }));
+}
+
+void
+viewex(const Arg *arg)
+{
+	view(&((Arg) { .ui = 1 << arg->ui }));
+}
+
+void
+viewall(const Arg *arg)
+{
+	view(&((Arg){.ui = ~0}));
+}
+
+void
+toggleviewex(const Arg *arg)
+{
+	toggleview(&((Arg) { .ui = 1 << arg->ui }));
+}
+
+void
+tagex(const Arg *arg)
+{
+	tag(&((Arg) { .ui = 1 << arg->ui }));
+}
+
+void
+toggletagex(const Arg *arg)
+{
+	toggletag(&((Arg) { .ui = 1 << arg->ui }));
+}
+
+void
+tagall(const Arg *arg)
+{
+	tag(&((Arg){.ui = ~0}));
+}
+
+/* signal definitions */
+/* signum must be greater than 0 */
+/* trigger signals using `xsetroot -name "fsignal:<signame> [<type> <value>]"` */
+static Signal signals[] = {
+	/* signum           function */
+	{ "focusstack",     focusstack },
+	{ "setmfact",       setmfact },
+	{ "setcfact",       setcfact },
+	{ "togglefloating", togglefloating },
+	{ "zoom",           zoom },
+	{ "view",           view },
+	{ "viewall",        viewall },
+	{ "viewex",         viewex },
+	{ "toggleview",     view },
+	{ "toggleviewex",   toggleviewex },
+	{ "tag",            tag },
+	{ "tagall",         tagall },
+	{ "tagex",          tagex },
+	{ "toggletag",      tag },
+	{ "toggletagex",    toggletagex },
+	{ "togglescratch",  togglescratch },
+	{ "killclient",     killclient },
+	{ "setlayout",      setlayout },
+	{ "setlayoutex",    setlayoutex },
+    { "layoutscroll",   layoutscroll },
+};

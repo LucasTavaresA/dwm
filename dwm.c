@@ -119,6 +119,11 @@ typedef struct {
 } Key;
 
 typedef struct {
+	const char * sig;
+	void (*func)(const Arg *);
+} Signal;
+
+typedef struct {
 	const char *symbol;
 	void (*arrange)(Monitor *);
 } Layout;
@@ -164,6 +169,7 @@ static void arrange(Monitor *m);
 static void arrangemon(Monitor *m);
 static void attach(Client *c);
 static void attachstack(Client *c);
+static int fake_signal(void);
 static void buttonpress(XEvent *e);
 static void checkotherwm(void);
 static void cleanup(void);
@@ -197,10 +203,8 @@ static void maprequest(XEvent *e);
 static void monocle(Monitor *m);
 static void motionnotify(XEvent *e);
 static void movemouse(const Arg *arg);
-static unsigned int nexttag(void);
 static Client *nexttiled(Client *c);
 static void pop(Client *);
-static unsigned int prevtag(void);
 static void propertynotify(XEvent *e);
 static Monitor *recttomon(int x, int y, int w, int h);
 static void resize(Client *c, int x, int y, int w, int h, int interact);
@@ -224,8 +228,6 @@ static void showhide(Client *c);
 static void sigchld(int unused);
 static void spawn(const Arg *arg);
 static void tag(const Arg *arg);
-static void tagtonext(const Arg *arg);
-static void tagtoprev(const Arg *arg);
 static void tile(Monitor *);
 static void togglefloating(const Arg *arg);
 static void togglescratch(const Arg *arg);
@@ -245,8 +247,6 @@ static void updatetitle(Client *c);
 static void updatewindowtype(Client *c);
 static void updatewmhints(Client *c);
 static void view(const Arg *arg);
-static void viewnext(const Arg *arg);
-static void viewprev(const Arg *arg);
 static Client *wintoclient(Window w);
 static Monitor *wintomon(Window w);
 static int xerror(Display *dpy, XErrorEvent *ee);
@@ -1095,6 +1095,49 @@ keypress(XEvent *e)
 			keys[i].func(&(keys[i].arg));
 }
 
+int
+fake_signal(void)
+{
+	char fsignal[256];
+	char indicator[9] = "fsignal:";
+	char str_sig[50];
+	char param[16];
+	int i, len_str_sig, n, paramn;
+	size_t len_fsignal, len_indicator = strlen(indicator);
+	Arg arg;
+
+	// Get root name property
+	if (gettextprop(root, XA_WM_NAME, fsignal, sizeof(fsignal))) {
+		len_fsignal = strlen(fsignal);
+
+		// Check if this is indeed a fake signal
+		if (len_indicator > len_fsignal ? 0 : strncmp(indicator, fsignal, len_indicator) == 0) {
+			paramn = sscanf(fsignal+len_indicator, "%s%n%s%n", str_sig, &len_str_sig, param, &n);
+
+			if (paramn == 1) arg = (Arg) {0};
+			else if (paramn > 2) return 1;
+			else if (strncmp(param, "i", n - len_str_sig) == 0)
+				sscanf(fsignal + len_indicator + n, "%i", &(arg.i));
+			else if (strncmp(param, "ui", n - len_str_sig) == 0)
+				sscanf(fsignal + len_indicator + n, "%u", &(arg.ui));
+			else if (strncmp(param, "f", n - len_str_sig) == 0)
+				sscanf(fsignal + len_indicator + n, "%f", &(arg.f));
+			else return 1;
+
+			// Check if a signal was found, and if so handle it
+			for (i = 0; i < LENGTH(signals); i++)
+				if (strncmp(str_sig, signals[i].sig, len_str_sig) == 0 && signals[i].func)
+					signals[i].func(&(arg));
+
+			// A fake signal was sent
+			return 1;
+		}
+	}
+
+	// No fake signal was sent, so proceed with update
+	return 0;
+}
+
 void
 killclient(const Arg *arg)
 {
@@ -1298,13 +1341,6 @@ movemouse(const Arg *arg)
 	}
 }
 
-unsigned int
-nexttag(void)
-{
-	unsigned int seltag = selmon->tagset[selmon->seltags];
-	return seltag == (1 << (LENGTH(tags) - 1)) ? 1 : seltag << 1;
-}
-
 Client *
 nexttiled(Client *c)
 {
@@ -1321,13 +1357,6 @@ pop(Client *c)
 	arrange(c->mon);
 }
 
-unsigned int
-prevtag(void)
-{
-	unsigned int seltag = selmon->tagset[selmon->seltags];
-	return seltag == 1 ? (1 << (LENGTH(tags) - 1)) : seltag >> 1;
-}
-
 void
 propertynotify(XEvent *e)
 {
@@ -1335,8 +1364,10 @@ propertynotify(XEvent *e)
 	Window trans;
 	XPropertyEvent *ev = &e->xproperty;
 
-	if ((ev->window == root) && (ev->atom == XA_WM_NAME))
-		updatestatus();
+	if ((ev->window == root) && (ev->atom == XA_WM_NAME)) {
+		if (!fake_signal())
+			updatestatus();
+	}
 	else if (ev->state == PropertyDelete)
 		return; /* ignore */
 	else if ((c = wintoclient(ev->window))) {
@@ -1811,32 +1842,6 @@ tag(const Arg *arg)
 		focus(NULL);
 		arrange(selmon);
 	}
-}
-
-void
-tagtonext(const Arg *arg)
-{
-	unsigned int tmp;
-
-	if (selmon->sel == NULL)
-		return;
-
-	tmp = nexttag();
-	tag(&(const Arg){.ui = tmp });
-	view(&(const Arg){.ui = tmp });
-}
-
-void
-tagtoprev(const Arg *arg)
-{
-	unsigned int tmp;
-
-	if (selmon->sel == NULL)
-		return;
-
-	tmp = prevtag();
-	tag(&(const Arg){.ui = tmp });
-	view(&(const Arg){.ui = tmp });
 }
 
 void
@@ -2392,18 +2397,6 @@ swallowingclient(Window w)
 	return NULL;
 }
 
-void
-viewnext(const Arg *arg)
-{
-	view(&(const Arg){.ui = nexttag()});
-}
-
-void
-viewprev(const Arg *arg)
-{
-	view(&(const Arg){.ui = prevtag()});
-}
- 
 Client *
 wintoclient(Window w)
 {
