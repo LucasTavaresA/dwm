@@ -79,7 +79,6 @@ static const Layout layouts[] = {
 	{ "  ",      monocle }, /* primeiro layout é o padrão */ 
 	{ "┬┬┬",      bstack },
 	{ "├─",       tile },
-    { "─┼─",      gaplessgrid },
 };
 
 /* key definitions */
@@ -96,7 +95,6 @@ static const Layout layouts[] = {
 
 /* aplicações */
 static const char *st[]              = { "st",                                    NULL };
-
 
 static Key keys[] = {
 	/* modifier           key             function          argument */
