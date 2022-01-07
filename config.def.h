@@ -86,7 +86,6 @@ static const Layout layouts[] = {
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
-#define HOLDKEY 0xffeb // 0 - disable; 0xffe9 - Mod1Mask; 0xffeb - Mod4Mask
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -100,13 +99,17 @@ static Key keys[] = {
 	{ MODKEY,             XK_backslash,   togglescratch,    {.ui = 0 } },
 	{ MODKEY,             XK_t,           togglefloating,   {0} },
     { MODKEY,             XK_Tab,         focusstack,       {.i = +1 } },
-	{ MODKEY,             XK_Up,          setmfact,         {.f = -0.05} },
-	{ MODKEY,             XK_Down,        setmfact,         {.f = +0.05} },
-	{ MODKEY,             XK_Left,        setmfact,         {.f = -0.05} },
-	{ MODKEY,             XK_Right,       setmfact,         {.f = +0.05} },
+	{ Mod1Mask,           XK_Up,          setmfact,         {.f = -0.05} },
+	{ Mod1Mask,           XK_Down,        setmfact,         {.f = +0.05} },
+	{ Mod1Mask,           XK_Left,        setmfact,         {.f = -0.05} },
+	{ Mod1Mask,           XK_Right,       setmfact,         {.f = +0.05} },
     { MODKEY,             XK_Return,      zoom,             {0} },
 	{ MODKEY,             XK_Menu,        killclient,       {0} },
 	{ MODKEY,             XK_Escape,      layoutscroll,     {.i = +1 } },
+	{ MODKEY,             XK_Right,       viewnext,         {0} },
+	{ MODKEY,             XK_Left,        viewprev,         {0} },
+	{ MODKEY|ShiftMask,   XK_Right,       tagtonext,        {0} },
+	{ MODKEY|ShiftMask,   XK_Left,        tagtoprev,        {0} },
 	{ MODKEY,             XK_0,           view,             {.ui = ~0 } },
 	{ MODKEY|ShiftMask,   XK_0,           tag,              {.ui = ~0 } },
 	TAGKEYS(              XK_1,                      0)
