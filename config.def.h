@@ -63,7 +63,7 @@ static const Rule rules[] = {
 	{ "Gcr-prompter",     "gcr-prompter",     NULL,            1 << 8,   1,         1,         0,         0,        -1 },
 	{ "ncmpcpp",          NULL,               NULL,            1 << 8 ,  1,         1,         0,         1,        -1 },
     { NULL,               NULL,               "Event Tester",  0,        0,         0,         0,         1,        -1 }, /* xev */
-	{ NULL,		          "st",		          NULL,		       SPTAG(0), 1,         1,		   1,         0,        -1 },
+	{ NULL,		          "st",		          NULL,		       SPTAG(0), 1,         0,		   1,         0,        -1 },
 };
 
 /* layout(s) */
@@ -107,7 +107,7 @@ static Key keys[] = {
 	{ Mod1Mask,           XK_Right,       setmfact,         {.f = +0.05} },
     { MODKEY,             XK_Return,      zoom,             {0} },
 	{ ShiftMask,          XK_Menu,        killclient,       {0} },
-	{ MODKEY,             XK_Escape,      layoutscroll,     {.i = +1 } },
+	{ Mod1Mask,           XK_Tab,      layoutscroll,     {.i = +1 } },
 	{ MODKEY,             XK_Right,       viewnext,         {0} },
 	{ MODKEY,             XK_Left,        viewprev,         {0} },
 	{ MODKEY|ShiftMask,   XK_Right,       tagtonext,        {0} },
