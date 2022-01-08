@@ -1,6 +1,6 @@
 # Minha build minimalista do dwm
 
-**Build sem nenhum patch referente a barra**
+**Barra totalmente removida**
 
 **Controlada usando [sxhkd](https://github.com/LucasTavaresA/dotfiles/blob/main/.config/sxhkd/sxhkdrc)**
 
