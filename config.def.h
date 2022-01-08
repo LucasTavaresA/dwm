@@ -62,6 +62,7 @@ static const Rule rules[] = {
 	{ "Transmission-gtk", "transmission-gtk", NULL,            1 << 8,   1,         1,         0,         0,        -1 },
 	{ "Gcr-prompter",     "gcr-prompter",     NULL,            1 << 8,   1,         1,         0,         0,        -1 },
 	{ "ncmpcpp",          NULL,               NULL,            1 << 8 ,  1,         1,         0,         1,        -1 },
+	{ "pulsemixer",       NULL,               NULL,            1 << 8 ,  1,         1,         0,         1,        -1 },
     { NULL,               NULL,               "Event Tester",  0,        0,         0,         0,         1,        -1 }, /* xev */
 	{ NULL,		          "st",		          NULL,		       SPTAG(0), 1,         0,		   1,         0,        -1 },
 };
@@ -199,4 +200,5 @@ static Signal signals[] = {
 	{ "setlayout",      setlayout },
 	{ "setlayoutex",    setlayoutex },
     { "layoutscroll",   layoutscroll },
+	{ "quit",           quit },
 };
