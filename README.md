@@ -37,3 +37,5 @@
 - Manda sinais para executar funções do dwm ([dwmc](https://dwm.suckless.org/patches/dwmc/))
 
 - Conserta borda piscando ao trocar de janelas ([noborderflicker](https://dwm.suckless.org/patches/noborderflicker/))
+
+- Telacheia falsa seletiva ([selectivefakefullscreen](https://dwm.suckless.org/patches/selectivefakefullscreen/))

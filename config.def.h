@@ -38,30 +38,34 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/*class               instance            title            tags mask iscentered isfloating isterminal noswallow monitor */
-	{ "Gimp",             NULL,               NULL,            0,        0,         0,         0,         0,        -1 },
-	{ "gimp",             NULL,               NULL,            0,        0,         0,         0,         0,        -1 },
-	{ "Firefox",          NULL,               NULL,            1 << 8,   0,         0,         0,         -1,       -1 },
-	{ "confirm",          NULL,               NULL,            1 << 8,   1,         1,         0,         0,        -1 },
-	{ "file_progress",    NULL,               NULL,            1 << 8,   1,         1,         0,         0,        -1 },
-	{ "dialog",           NULL,               NULL,            1 << 8,   1,         1,         0,         0,        -1 },
-	{ "download",         NULL,               NULL,            1 << 8,   1,         1,         0,         0,        -1 },
-	{ "error",            NULL,               NULL,            1 << 8,   1,         1,         0,         0,        -1 },
-	{ "MPlayer",          NULL,               NULL,            1 << 8,   1,         1,         0,         0,        -1 },
-	{ "notification",     NULL,               NULL,            1 << 8,   1,         1,         0,         0,        -1 },
-	{ "pinentry-gtk-2",   NULL,               NULL,            1 << 8,   1,         1,         0,         0,        -1 },
-	{ "splash",           NULL,               NULL,            1 << 8,   1,         1,         0,         0,        -1 },
-	{ "toolbar",          NULL,               NULL,            1 << 8,   1,         1,         0,         0,        -1 },
-	{ "Galculator",       "galculator",       NULL,            1 << 8,   1,         1,         0,         0,        -1 },
-	{ "firefox",          "Devtools",         NULL,            1 << 8,   1,         1,         0,         0,        -1 },
-	{ "MEGAsync",         "megasync",         NULL,            1 << 8,   1,         1,         0,         0,        -1 },
-	{ "firefox",          "Places",           NULL,            1 << 8,   1,         1,         0,         0,        -1 },
-	{ "Transmission-gtk", "transmission-gtk", NULL,            1 << 8,   1,         1,         0,         0,        -1 },
-	{ "Gcr-prompter",     "gcr-prompter",     NULL,            1 << 8,   1,         1,         0,         0,        -1 },
-	{ "ncmpcpp",          NULL,               NULL,            1 << 8 ,  1,         1,         0,         1,        -1 },
-	{ "pulsemixer",       NULL,               NULL,            1 << 8 ,  1,         1,         0,         1,        -1 },
-    { NULL,               NULL,               "Event Tester",  0,        0,         0,         0,         1,        -1 }, /* xev */
-	{ "stscratchpad",	  NULL,	              NULL,		       SPTAG(0), 1,         0,		   1,         0,        -1 },
+	/* class      instance    title       tags mask     isfloating   isfakefullscreen monitor */
+	{ "Gimp",     NULL,       NULL,       0,            1,           0,               -1 },
+	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           1,               -1 },
+	/*class               instance            title            tags mask iscentered isfloating isfakefullscreen isterminal noswallow monitor */
+	{ "Gimp",             NULL,               NULL,            0,        0,         0,         0,               0,         0,        -1 },
+	{ "gimp",             NULL,               NULL,            0,        0,         0,         0,               0,         0,        -1 },
+	{ "Firefox",          NULL,               NULL,            1 << 8,   0,         0,         1,               0,         0,       -1 },
+	{ "qutebrowser",      "qutebrowser",      NULL,            1 << 8,   0,         0,         1,               0,         0,       -1 },
+	{ "confirm",          NULL,               NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "file_progress",    NULL,               NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "dialog",           NULL,               NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "download",         NULL,               NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "error",            NULL,               NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "MPlayer",          NULL,               NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "notification",     NULL,               NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "pinentry-gtk-2",   NULL,               NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "splash",           NULL,               NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "toolbar",          NULL,               NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "Galculator",       "galculator",       NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "firefox",          "Devtools",         NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "MEGAsync",         "megasync",         NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "firefox",          "Places",           NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "Transmission-gtk", "transmission-gtk", NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "Gcr-prompter",     "gcr-prompter",     NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "ncmpcpp",          NULL,               NULL,            1 << 8 ,  1,         1,         0,               0,         1,        -1 },
+	{ "pulsemixer",       NULL,               NULL,            1 << 8 ,  1,         1,         0,               0,         1,        -1 },
+    { NULL,               NULL,               "Event Tester",  0,        0,         0,         0,               0,         1,        -1 }, /* xev */
+	{ "stscratchpad",	  NULL,	              NULL,		       SPTAG(0), 1,         0,		   0,               1,         0,        -1 },
 };
 
 /* layout(s) */
