@@ -78,12 +78,12 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod4Mask
-#define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+/* #define MODKEY Mod4Mask */
+/* #define TAGKEYS(KEY,TAG) \ */
+	/* { MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \ */
+	/* { MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \ */
+	/* { MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \ */
+	/* { MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} }, */
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -92,9 +92,9 @@ static const Layout layouts[] = {
 static const char *st[]              = { "st",                                    NULL };
 
 /* Atalhos configurados usando sxhkd */
-static Key keys[] = { 
+/* static Key keys[] = { */ 
 	/* modifier           key             function          argument */
-    { MODKEY|ShiftMask|ControlMask,   XK_b,      spawn,            {.v = st } },
+    /* { MODKEY|ShiftMask|ControlMask,   XK_b,      spawn,            {.v = st } }, */
 	/* { MODKEY,             XK_backslash,   togglescratch,    {.ui = 0 } }, */
 	/* { MODKEY,             XK_t,           togglefloating,   {0} }, */
     /* { MODKEY,             XK_Tab,         focusstack,       {.i = +1 } }, */
@@ -112,7 +112,7 @@ static Key keys[] = {
 	/* TAGKEYS(              XK_1,                      0) */
 	/* TAGKEYS(              XK_2,                      1) */
 	/* TAGKEYS(              XK_3,                      2) */
-};
+/* }; */
 
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
@@ -122,12 +122,12 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = st } },
-	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
-	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
+	{ ClkClientWin,         Mod4Mask,       Button1,        movemouse,      {0} },
+	{ ClkClientWin,         Mod4Mask,       Button3,        resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
-	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
-	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+	{ ClkTagBar,            Mod4Mask,       Button1,        tag,            {0} },
+	{ ClkTagBar,            Mod4Mask,       Button3,        toggletag,      {0} },
 };
 
 void
