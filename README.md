@@ -39,3 +39,5 @@
 - Conserta borda piscando ao trocar de janelas ([noborderflicker](https://dwm.suckless.org/patches/noborderflicker/))
 
 - Telacheia falsa seletiva ([selectivefakefullscreen](https://dwm.suckless.org/patches/selectivefakefullscreen/))
+
+- Trocado layout padrão pelo grid sem espaços vazios ([gaplessgrid](https://dwm.suckless.org/patches/gaplessgrid/))
