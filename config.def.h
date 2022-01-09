@@ -24,7 +24,7 @@ typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-const char *sp1[] = {"st", NULL };
+const char *sp1[] = {"st", "-c", "stscratchpad", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"st",      sp1},
@@ -61,7 +61,7 @@ static const Rule rules[] = {
 	{ "ncmpcpp",          NULL,               NULL,            1 << 8 ,  1,         1,         0,         1,        -1 },
 	{ "pulsemixer",       NULL,               NULL,            1 << 8 ,  1,         1,         0,         1,        -1 },
     { NULL,               NULL,               "Event Tester",  0,        0,         0,         0,         1,        -1 }, /* xev */
-	{ NULL,		          "st",		          NULL,		       SPTAG(0), 1,         0,		   1,         0,        -1 },
+	{ "stscratchpad",	  NULL,	              NULL,		       SPTAG(0), 1,         0,		   1,         0,        -1 },
 };
 
 /* layout(s) */
@@ -89,7 +89,7 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* aplicações */
-static const char *st[]              = { "st",                                    NULL };
+/* static const char *st[]              = { "st",                                    NULL }; */
 
 /* Atalhos configurados usando sxhkd */
 /* static Key keys[] = { */ 
@@ -121,7 +121,6 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = st } },
 	{ ClkClientWin,         Mod4Mask,       Button1,        movemouse,      {0} },
 	{ ClkClientWin,         Mod4Mask,       Button3,        resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },

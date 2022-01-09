@@ -315,9 +315,9 @@ applyrules(Client *c)
 		&& (!r->instance || strstr(instance, r->instance)))
 		{
 			c->iscentered = r->iscentered;
+			c->isfloating = r->isfloating;
 			c->isterminal = r->isterminal;
 			c->noswallow  = r->noswallow;
-			c->isfloating = r->isfloating;
 			c->tags |= r->tags;
 			if ((r->tags & SPTAGMASK) && r->isfloating) {
 				c->x = c->mon->wx + (c->mon->ww / 2 - WIDTH(c) / 2);
