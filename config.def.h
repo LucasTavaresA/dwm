@@ -9,7 +9,7 @@ static const int user_bh            = 20;        /* 0 means that dwm will calcul
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int focusonwheel  = 0;
 static const char *fonts[]     = {
-    "Inconsolata Regular:size=11",
+    "Monospace Regular:size=11",
     "SauceCodePro Nerd Font Mono:weight=bold:size=16:antialias=true:hinting=true"
 };
 static const char dmenufont[]  = "Inconsolata Regular:size=11";

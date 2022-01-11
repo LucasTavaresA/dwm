@@ -1,6 +1,4 @@
-# Minha build minimalista do dwm
-
-**Barra totalmente removida**
+# Minha build do dwm
 
 **Controlada usando [sxhkd](https://github.com/LucasTavaresA/dotfiles/blob/main/.config/sxhkd/sxhkdrc)**
 
@@ -40,4 +38,4 @@
 
 - Telacheia falsa seletiva ([selectivefakefullscreen](https://dwm.suckless.org/patches/selectivefakefullscreen/))
 
-- Trocado layout padrão pelo grid sem espaços vazios ([gaplessgrid](https://dwm.suckless.org/patches/gaplessgrid/))
+- Grid sem espaços vazios ([gaplessgrid](https://dwm.suckless.org/patches/gaplessgrid/))
