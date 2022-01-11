@@ -5,9 +5,9 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int focusonwheel  = 0;
-static const char *fonts[]     = { 
+static const char *fonts[]     = {
     "Inconsolata Regular:size=11",
-    "SauceCodePro Nerd Font Mono:weight=bold:size=16:antialias=true:hinting=true" 
+    "SauceCodePro Nerd Font Mono:weight=bold:size=16:antialias=true:hinting=true"
 };
 static const char dmenufont[]  = "Inconsolata Regular:size=11";
 static const char col_black[]  = "#000000";
@@ -75,10 +75,11 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 static const int lockfullscreen = 0; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
-	/* symbol     arrange function */ 
-	{ "  ",      monocle }, /* primeiro layout é o padrão */ 
-    { "─┼─",      gaplessgrid },
+	/* symbol     arrange function */
+	{ "  ",      monocle }, /* primeiro layout é o padrão */
 	{ "┬┬┬",      bstack },
+    { " ├─",      tile },
+    { "─┼─",      gaplessgrid },
 };
 
 /* key definitions */
@@ -96,7 +97,7 @@ static const Layout layouts[] = {
 /* static const char *st[]              = { "st",                                    NULL }; */
 
 /* Atalhos configurados usando sxhkd */
-/* static Key keys[] = { */ 
+/* static Key keys[] = { */
 	/* modifier           key             function          argument */
     /* { MODKEY|ShiftMask|ControlMask,   XK_b,      spawn,            {.v = st } }, */
 	/* { MODKEY,             XK_backslash,   togglescratch,    {.ui = 0 } }, */
@@ -202,3 +203,4 @@ static Signal signals[] = {
     { "layoutscroll",   layoutscroll },
 	{ "quit",           quit },
 };
+
