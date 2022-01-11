@@ -3,6 +3,9 @@
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
+static const int showbar            = 0;        /* 0 means no bar */
+static const int topbar             = 1;        /* 0 means bottom bar */
+static const int user_bh            = 20;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int focusonwheel  = 0;
 static const char *fonts[]     = {
@@ -88,12 +91,11 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-/* #define MODKEY Mod4Mask */
 /* #define TAGKEYS(KEY,TAG) \ */
-	/* { MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \ */
-	/* { MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \ */
-	/* { MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \ */
-	/* { MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} }, */
+	/* { Mod4Mask,                       KEY,      view,           {.ui = 1 << TAG} }, \ */
+	/* { Mod4Mask|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \ */
+	/* { Mod4Mask|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \ */
+	/* { Mod4Mask|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} }, */
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
@@ -104,24 +106,25 @@ static const Layout layouts[] = {
 /* Atalhos configurados usando sxhkd */
 /* static Key keys[] = { */
 	/* modifier           key             function          argument */
-    /* { MODKEY|ShiftMask|ControlMask,   XK_b,      spawn,            {.v = st } }, */
-	/* { MODKEY,             XK_backslash,   togglescratch,    {.ui = 0 } }, */
-	/* { MODKEY,             XK_t,           togglefloating,   {0} }, */
-    /* { MODKEY,             XK_Tab,         focusstack,       {.i = +1 } }, */
-    /* { MODKEY,             XK_Right,       focusstack,       {.i = +1 } }, */
-    /* { MODKEY,             XK_Left,        focusstack,       {.i = -1 } }, */
-	/* { Mod1Mask,           XK_Down,        setcfact,         {.f = +0.25} }, */
-	/* { Mod1Mask,           XK_Up,          setcfact,         {.f = -0.25} }, */
-	/* { Mod1Mask,           XK_Left,        setmfact,         {.f = -0.05} }, */
-	/* { Mod1Mask,           XK_Right,       setmfact,         {.f = +0.05} }, */
-    /* { MODKEY,             XK_Return,      zoom,             {0} }, */
-	/* { ShiftMask,          XK_Menu,        killclient,       {0} }, */
-	/* { MODKEY,             XK_Escape,      layoutscroll,     {.i = +1 } }, */
-	/* { MODKEY,             XK_0,           view,             {.ui = ~0 } }, */
-	/* { MODKEY|ShiftMask,   XK_0,           tag,              {.ui = ~0 } }, */
-	/* TAGKEYS(              XK_1,                      0) */
-	/* TAGKEYS(              XK_2,                      1) */
-	/* TAGKEYS(              XK_3,                      2) */
+    /* { Mod4Mask|ShiftMask,   XK_Return,      spawn,            {.v = st } }, */
+	/* { Mod4Mask,             XK_backslash,   togglescratch,    {.ui = 0 } }, */
+	/* { Mod4Mask,             XK_t,           togglefloating,   {0} }, */
+	/* { Mod4Mask|ShiftMask,   XK_space,       togglebar,        {0} }, */
+    /* { Mod4Mask,             XK_Tab,         focusstack,       {.i = +1 } }, */
+    /* { Mod4Mask,             XK_Right,       focusstack,       {.i = +1 } }, */
+    /* { Mod4Mask,             XK_Left,        focusstack,       {.i = -1 } }, */
+	/* { Mod1Mask,             XK_Down,        setcfact,         {.f = +0.25} }, */
+	/* { Mod1Mask,             XK_Up,          setcfact,         {.f = -0.25} }, */
+	/* { Mod1Mask,             XK_Left,        setmfact,         {.f = -0.05} }, */
+	/* { Mod1Mask,             XK_Right,       setmfact,         {.f = +0.05} }, */
+    /* { Mod4Mask,             XK_Return,      zoom,             {0} }, */
+	/* { ShiftMask,            XK_Menu,        killclient,       {0} }, */
+	/* { Mod4Mask,             XK_Escape,      layoutscroll,     {.i = +1 } }, */
+	/* { Mod4Mask,             XK_0,           view,             {.ui = ~0 } }, */
+	/* { Mod4Mask|ShiftMask,   XK_0,           tag,              {.ui = ~0 } }, */
+	/* TAGKEYS(                XK_1,                             0) */
+	/* TAGKEYS(                XK_2,                             1) */
+	/* TAGKEYS(                XK_3,                             2) */
 /* }; */
 
 /* button definitions */
@@ -221,5 +224,6 @@ static Signal signals[] = {
 	{ "setmonocle",     setmonocle },
     { "layoutscroll",   layoutscroll },
 	{ "quit",           quit },
+    { "togglebar",      togglebar },
 };
 
