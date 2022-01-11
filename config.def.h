@@ -74,12 +74,17 @@ static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 0; /* 1 will force focus on the fullscreen window */
 
+static const Layout Monocle[] = {
+	{ "  ",      monocle },
+};
+
+static const Layout Grid[] = {
+    { "─┼─",      gaplessgrid },
+};
+
 static const Layout layouts[] = {
-	/* symbol     arrange function */
-	{ "  ",      monocle }, /* primeiro layout é o padrão */
 	{ "┬┬┬",      bstack },
     { " ├─",      tile },
-    { "─┼─",      gaplessgrid },
 };
 
 /* key definitions */
@@ -138,6 +143,18 @@ void
 setlayoutex(const Arg *arg)
 {
 	setlayout(&((Arg) { .v = &layouts[arg->i] }));
+}
+
+void
+setmonocle(const Arg *arg)
+{
+	setlayout(&((Arg) { .v = &Monocle[arg->i] }));
+}
+
+void
+setgrid(const Arg *arg)
+{
+	setlayout(&((Arg) { .v = &Grid[arg->i] }));
 }
 
 void
@@ -200,6 +217,8 @@ static Signal signals[] = {
 	{ "killclient",     killclient },
 	{ "setlayout",      setlayout },
 	{ "setlayoutex",    setlayoutex },
+	{ "setgrid",        setgrid },
+	{ "setmonocle",     setmonocle },
     { "layoutscroll",   layoutscroll },
 	{ "quit",           quit },
 };
