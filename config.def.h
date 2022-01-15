@@ -14,11 +14,12 @@ static const char *fonts[]     = {
 };
 static const char dmenufont[]  = "Inconsolata Regular:size=11";
 static const char col_black[]  = "#000000";
+static const char col_grey[]   = "#333333";
 static const char col_white[]  = "#FFFFFF";
 static const char col_red[]    = "#FF0000";
 static const char *colors[][3] = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_white, col_black, col_black },
+	[SchemeNorm] = { col_white, col_black, col_grey },
 	[SchemeSel]  = { col_white, col_black, col_white },
 	[SchemeUrg]  = { col_white, col_black, col_red },
 };
@@ -41,40 +42,38 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   isfakefullscreen monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           0,               -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           1,               -1 },
-	/*class               instance            title            tags mask iscentered isfloating isfakefullscreen isterminal noswallow monitor */
-	{ "Gimp",             NULL,               NULL,            0,        0,         0,         0,               0,         0,        -1 },
-	{ "gimp",             NULL,               NULL,            0,        0,         0,         0,               0,         0,        -1 },
-	{ "Firefox",          NULL,               NULL,            1 << 8,   0,         0,         1,               0,         0,       -1 },
-	{ "qutebrowser",      "qutebrowser",      NULL,            1 << 8,   0,         0,         1,               0,         0,       -1 },
-	{ "confirm",          NULL,               NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
-	{ "file_progress",    NULL,               NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
-	{ "dialog",           NULL,               NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
-	{ "download",         NULL,               NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
-	{ "error",            NULL,               NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
-	{ "MPlayer",          NULL,               NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
-	{ "notification",     NULL,               NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
-	{ "pinentry-gtk-2",   NULL,               NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
-	{ "splash",           NULL,               NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
-	{ "toolbar",          NULL,               NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
-	{ "Galculator",       "galculator",       NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
-	{ "firefox",          "Devtools",         NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
-	{ "MEGAsync",         "megasync",         NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
-	{ "firefox",          "Places",           NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
-	{ "Transmission-gtk", "transmission-gtk", NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
-	{ "Gcr-prompter",     "gcr-prompter",     NULL,            1 << 8,   1,         1,         0,               0,         0,        -1 },
-	{ "ncmpcpp",          NULL,               NULL,            1 << 8 ,  1,         1,         0,               0,         1,        -1 },
-	{ "pulsemixer",       NULL,               NULL,            1 << 8 ,  1,         1,         0,               0,         1,        -1 },
-    { NULL,               NULL,               "Event Tester",  0,        0,         0,         0,               0,         1,        -1 }, /* xev */
-	{ "stscratchpad",	  NULL,	              NULL,		       SPTAG(0), 1,         0,		   0,               1,         0,        -1 },
+/*        class               instance            title           tagmask   iscentered isfloating isfakefullscreen isterminal noswallow monitor*/
+	{ "Gimp",             NULL,               NULL,           0,        0,         0,         0,               0,         0,        -1 },
+	{ "gimp",             NULL,               NULL,           0,        0,         0,         0,               0,         0,        -1 },
+	{ "Firefox",          NULL,               NULL,           1 << 8,   0,         0,         1,               0,         0,        -1 },
+	{ "confirm",          NULL,               NULL,           1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "dialog",           NULL,               NULL,           1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "download",         NULL,               NULL,           1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "error",            NULL,               NULL,           1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "MPlayer",          NULL,               NULL,           1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "splash",           NULL,               NULL,           1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "toolbar",          NULL,               NULL,           1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "ncmpcpp",          NULL,               NULL,           0,        1,         1,         0,               0,         1,        -1 },
+	{ "pulsemixer",       NULL,               NULL,           0,        1,         1,         0,               0,         1,        -1 },
+	{ "notification",     NULL,               NULL,           1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "pinentry-gtk-2",   NULL,               NULL,           1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "file_progress",    NULL,               NULL,           1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "stscratchpad",     NULL,	          NULL,           SPTAG(0), 1,         0,         0,               1,         0,        -1 },
+        { "st",               NULL,               NULL,           0,        1,         0,         0,               1,         0,        -1 },
+	{ "qutebrowser",      "qutebrowser",      NULL,           1 << 8,   0,         0,         1,               0,         0,        -1 },
+	{ "Gcr-prompter",     "gcr-prompter",     NULL,           1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "Galculator",       "galculator",       NULL,           1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "firefox",          "Devtools",         NULL,           1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "MEGAsync",         "megasync",         NULL,           1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "firefox",          "Places",           NULL,           1 << 8,   1,         1,         0,               0,         0,        -1 },
+	{ "Transmission-gtk", "transmission-gtk", NULL,           0,        1,         1,         0,               0,         0,        -1 },
+        { NULL,               NULL,               "Event Tester", 0,        1,         1,         0,               0,         1,        -1 },
 };
 
 /* layout(s) */
 static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 0; /* 1 will force focus on the fullscreen window */
 
 static const Layout Monocle[] = {
@@ -87,7 +86,7 @@ static const Layout Grid[] = {
 
 static const Layout layouts[] = {
 	{ "┬┬┬",      bstack },
-    { " ├─",      tile },
+	{ " ├─",      tile },
 };
 
 /* key definitions */

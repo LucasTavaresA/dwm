@@ -2,6 +2,9 @@
 
 **Controlada usando [sxhkd](https://github.com/LucasTavaresA/dotfiles/blob/main/.config/sxhkd/sxhkdrc)**
 
+**Layouts grid e monocle trocados para uma struct separada**
+
+
 ![screenshot](./screenshot.png)
 
 ## Patches
