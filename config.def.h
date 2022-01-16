@@ -9,10 +9,10 @@ static const int user_bh            = 20;        /* 0 means that dwm will calcul
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int focusonwheel  = 0;
 static const char *fonts[]     = {
-    "Monospace Regular:size=11",
+    "Fira Code:pixelsize=16:antialias=true:autohint=true",
     "SauceCodePro Nerd Font Mono:weight=bold:size=16:antialias=true:hinting=true"
 };
-static const char dmenufont[]  = "Inconsolata Regular:size=11";
+static const char dmenufont[]  = "Fira Code:pixelsize=16:antialias=true:autohint=true";
 static const char col_black[]  = "#000000";
 static const char col_grey[]   = "#333333";
 static const char col_white[]  = "#FFFFFF";
