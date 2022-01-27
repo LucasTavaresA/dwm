@@ -1,0 +1,46 @@
+* Minha build do dwm
+
+*Controlada usando a minha configuração do [[https://github.com/LucasTavaresA/dotfiles/blob/main/.config/sxhkd/sxhkdrc][sxhkd]]*
+
+*Layouts grid e monocle trocados para uma struct separada*
+
+[[./screenshot.png]]
+
+** Patches
+
+*Você pode retirar patches usando esse comando, não garanto que vá funcionar sem ajustes posteriores no código*
+#+begin_src shell
+patch -R < exemplopatch.diff
+#+end_src
+
+- Troca em ciclo de layouts ([[https://dwm.suckless.org/patches/layoutscroll/][layoutscroll]])
+
+- Modo bottom stack ([[https://dwm.suckless.org/patches/bottomstack/][bottomstack]])
+
+- Foco com clique do mouse ([[https://dwm.suckless.org/patches/focusonclick/][focusonclick]])
+
+- Modo sem bordas quando só tem uma janela visível ([[https://dwm.suckless.org/patches/removeborder/][removeborder]])
+
+- Ajustamento de bordas pela borda mais próxima do cursor ([[https://github.com/bakkeby/patches/blob/master/dwm/dwm-resizepoint-6.2.diff][resizepoint]])
+
+- Salvamento de posição e tamanho de janelas flutuantes ([[https://dwm.suckless.org/patches/save_floats/][save floats]])
+
+- regra que centraliza janelas ([[https://dwm.suckless.org/patches/center/][center]])
+
+- Borda vermelha em janelas urgentes ([[https://dwm.suckless.org/patches/urgentborder/][urgentborder]])
+
+- Diferentes layouts para cada tag ([[https://dwm.suckless.org/patches/pertag/][pertag]])
+
+- ([[https://dwm.suckless.org/patches/scratchpads/][scratchpads]])
+
+- Programas abertos pelo terminal tomam o lugar do mesmo ate serem fechados ([[https://dwm.suckless.org/patches/swallow/][swallow]])
+
+- Mudar tamanho de janelas dentro da stack ([[https://dwm.suckless.org/patches/cfacts/][cfacts]])
+
+- Manda sinais para executar funções do dwm ([[https://dwm.suckless.org/patches/dwmc/][dwmc]])
+
+- Conserta borda piscando ao trocar de janelas ([[https://dwm.suckless.org/patches/noborderflicker/][noborderflicker]])
+
+- Telacheia falsa seletiva ([[https://dwm.suckless.org/patches/selectivefakefullscreen/][selectivefakefullscreen]])
+
+- Grid sem espaços vazios ([[https://dwm.suckless.org/patches/gaplessgrid/][gaplessgrid]])
