@@ -34,6 +34,10 @@ static Sp scratchpads[] = {
 	{"st",      sp1},
 };
 
+/* swallow emacs */
+static const char emacsclient[] = "emacsclient";
+static const char emacsname[] = "emacs@";
+
 /* tagging */
 static const char *tags[] = { "1", "2", "3" };
 
