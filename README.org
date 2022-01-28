@@ -45,4 +45,4 @@ patch -R < exemplopatch.diff
 
 - Grid sem espaços vazios ([[https://dwm.suckless.org/patches/gaplessgrid/][gaplessgrid]])
 
-- Swallow compativel com o emacsclient([[https://www.reddit.com/r/suckless/comments/g4d1rb/dwm_on_swallowing_nonchild_processes_namely_emacs/][swallowemacsclient]])
+- Swallow compativel com o emacsclient ([[https://www.reddit.com/r/suckless/comments/g4d1rb/dwm_on_swallowing_nonchild_processes_namely_emacs/][swallowemacsclient]])
