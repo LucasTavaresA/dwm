@@ -2,7 +2,7 @@
 
 *Controlada usando a minha configuração do [[https://github.com/LucasTavaresA/dotfiles/blob/main/.config/sxhkd/sxhkdrc][sxhkd]]*
 
-*Layouts grid e monocle trocados para uma struct separada*
+*Layout grid em uma struct separada*
 
 [[./screenshot.png]]
 
@@ -25,7 +25,7 @@ patch -R < exemplopatch.diff
 
 - Salvamento de posição e tamanho de janelas flutuantes ([[https://dwm.suckless.org/patches/save_floats/][save floats]])
 
-- regra que centraliza janelas ([[https://dwm.suckless.org/patches/center/][center]])
+- Regra que centraliza janelas ([[https://dwm.suckless.org/patches/center/][center]])
 
 - Borda vermelha em janelas urgentes ([[https://dwm.suckless.org/patches/urgentborder/][urgentborder]])
 
@@ -41,8 +41,10 @@ patch -R < exemplopatch.diff
 
 - Conserta borda piscando ao trocar de janelas ([[https://dwm.suckless.org/patches/noborderflicker/][noborderflicker]])
 
-- Telacheia falsa seletiva ([[https://dwm.suckless.org/patches/selectivefakefullscreen/][selectivefakefullscreen]])
+- Tela cheia falsa seletiva ([[https://dwm.suckless.org/patches/selectivefakefullscreen/][selectivefakefullscreen]])
 
 - Grid sem espaços vazios ([[https://dwm.suckless.org/patches/gaplessgrid/][gaplessgrid]])
 
-- Swallow compativel com o emacsclient ([[https://www.reddit.com/r/suckless/comments/g4d1rb/dwm_on_swallowing_nonchild_processes_namely_emacs/][swallowemacsclient]])
+- Swallow compatível com o emacsclient ([[https://www.reddit.com/r/suckless/comments/g4d1rb/dwm_on_swallowing_nonchild_processes_namely_emacs/][swallowemacsclient]])
+
+- Troca janela ou foca tags adjecentes ([[https://dwm.suckless.org/patches/adjacenttag/][adjacenttags]])
