@@ -2135,10 +2135,10 @@ void updatebarpos(Monitor *m) {
   m->wy = m->my;
   m->wh = m->mh;
   if (m->showbar) {
-    /* Janelas ignoram a barra */
-    /* m->wh -= bh; */
+    /* ! = Janelas ignoram a barra */
+    m->wh -= bh; /* ! */
     m->by = m->topbar ? m->wy : m->wy + m->wh;
-    /* m->wy = m->topbar ? m->wy + bh : m->wy; */
+    m->wy = m->topbar ? m->wy + bh : m->wy; /* ! */
   } else
     m->by = -bh;
 }

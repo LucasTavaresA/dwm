@@ -3,28 +3,27 @@
 /* appearance */
 static const unsigned int borderpx = 1; /* border pixel of windows */
 static const unsigned int snap = 32;    /* snap pixel */
-static const int showbar = 0;           /* 0 means no bar */
+static const int showbar = 1;           /* 0 means no bar */
 static const int topbar = 1;            /* 0 means bottom bar */
 static const int user_bh = 20; /* 0 means that dwm will calculate bar height, >=
                                   1 means dwm will user_bh as bar height */
-static const int swallowfloating =
-    0; /* 1 means swallow floating windows by default */
+static const int swallowfloating = 0; /* 1 means swallow floating windows by default */
 static const int focusonwheel = 0;
 static const char *fonts[] = {
     "Fira Code:pixelsize=16:antialias=true:autohint=true",
-    "SauceCodePro Nerd Font "
-    "Mono:weight=bold:size=16:antialias=true:hinting=true"};
-static const char dmenufont[] =
-    "Fira Code:pixelsize=16:antialias=true:autohint=true";
+    "SauceCodePro Nerd Font ",
+    "Mono:weight=bold:size=16:antialias=true:hinting=true"
+};
+static const char dmenufont[] = "Fira Code:pixelsize=16:antialias=true:autohint=true";
 static const char col_black[] = "#000000";
-static const char col_grey[] = "#333333";
+static const char col_grey[]  = "#333333";
 static const char col_white[] = "#FFFFFF";
-static const char col_red[] = "#FF0000";
+static const char col_red[]   = "#FF0000";
 static const char *colors[][3] = {
-    /*               fg         bg         border   */
+    /*              fg         bg         border   */
     [SchemeNorm] = {col_white, col_black, col_grey},
-    [SchemeSel] = {col_white, col_black, col_white},
-    [SchemeUrg] = {col_white, col_black, col_red},
+    [SchemeSel] =  {col_white, col_grey,  col_white},
+    [SchemeUrg] =  {col_white, col_black, col_red},
 };
 
 typedef struct {
@@ -82,40 +81,28 @@ static const Rule rules[] = {
 /* layout(s) */
 static const float mfact = 0.50; /* factor of master area size [0.05..0.95] */
 static const int nmaster = 1;    /* number of clients in master area */
-static const int resizehints =
-    0; /* 1 means respect size hints in tiled resizals */
-static const int lockfullscreen =
-    0; /* 1 will force focus on the fullscreen window */
-
-static const Layout Grid[] = {
-    {"─┼─", gaplessgrid},
-};
+static const int resizehints = 0; /* 1 means respect size hints in tiled resizals */
+static const int lockfullscreen = 0; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
     {"  ", monocle},
     {"┬┬┬", bstack},
     {" ├─", tile},
+    {"─┼─", gaplessgrid},
 };
 
 /* key definitions */
-/* #define TAGKEYS(KEY,TAG) \ */
-/* { Mod4Mask,                       KEY,      view,           {.ui = 1 << TAG}
- * }, \ */
-/* { Mod4Mask|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG}
- * }, \ */
-/* { Mod4Mask|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG}
- * }, \ */
-/* { Mod4Mask|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG}
- * }, */
+/* #define TAGKEYS(KEY,TAG) */
+/* { Mod4Mask,                       KEY,      view,           {.ui = 1 << TAG}}, */
+/* { Mod4Mask|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG}}, */
+/* { Mod4Mask|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG}}, */
+/* { Mod4Mask|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG}}, */
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd)                                                             \
-  {                                                                            \
-    .v = (const char *[]) { "/bin/sh", "-c", cmd, NULL }                       \
-  }
+#define SHCMD(cmd) { .v = (const char *[]) { "/bin/sh", "-c", cmd, NULL }}
 
 /* aplicações */
-/* static const char *st[]              = { "st", NULL }; */
+/* static const char *st[] = { "st", NULL }; */
 
 /* Atalhos configurados usando sxhkd */
 /* static Key keys[] = { */
@@ -146,11 +133,9 @@ static const Layout layouts[] = {
 /* }; */
 
 /* button definitions */
-/* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle,
- * ClkClientWin, or ClkRootWin */
+/* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
-    /* click                event mask      button          function argument
-     */
+/*   click         eventmask button   function     argument */
     {ClkLtSymbol,  0,        Button1, setlayout,   {0}},
     {ClkLtSymbol,  0,        Button3, setlayout,   {.v = &layouts[2]}},
     {ClkWinTitle,  0,        Button2, zoom,        {0}},
@@ -163,8 +148,6 @@ static Button buttons[] = {
 };
 
 void setlayoutex(const Arg *arg) { setlayout(&((Arg){.v = &layouts[arg->i]})); }
-
-void setgrid(const Arg *arg) { setlayout(&((Arg){.v = &Grid[arg->i]})); }
 
 void viewex(const Arg *arg) { view(&((Arg){.ui = 1 << arg->ui})); }
 
@@ -180,8 +163,7 @@ void tagall(const Arg *arg) { tag(&((Arg){.ui = ~0})); }
 
 /* signal definitions */
 /* signum must be greater than 0 */
-/* trigger signals using `xsetroot -name "fsignal:<signame> [<type> <value>]"`
- */
+/* trigger signals using `xsetroot -name "fsignal:<signame> [<type> <value>]"` */
 static Signal signals[] = {
     /* signum           function */
     {"focusstack",     focusstack},
@@ -203,7 +185,6 @@ static Signal signals[] = {
     {"killclient",     killclient},
     {"setlayout",      setlayout},
     {"setlayoutex",    setlayoutex},
-    {"setgrid",        setgrid},
     {"layoutscroll",   layoutscroll},
     {"quit",           quit},
     {"togglebar",      togglebar},

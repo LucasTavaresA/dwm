@@ -2,15 +2,13 @@
 
 *Controlada usando a minha configuração do [[https://github.com/LucasTavaresA/dotfiles/blob/main/.config/sxhkd/sxhkdrc][sxhkd]]*
 
-*Layout grid em uma struct separada*
-
 [[./screenshot.png]]
 
 ** Patches
 
 *Você pode retirar patches usando esse comando, não garanto que vá funcionar sem ajustes posteriores no código*
 #+begin_src shell
-patch -R < exemplopatch.diff
+patch -R < exemplo.diff
 #+end_src
 
 - Troca em ciclo de layouts ([[https://dwm.suckless.org/patches/layoutscroll/][layoutscroll]])
