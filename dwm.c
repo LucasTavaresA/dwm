@@ -1299,9 +1299,9 @@ void movemouse(const Arg *arg) {
 
   if (!(c = selmon->sel))
     return;
-  if (c->isfullscreen &&
-      !c->isfakefullscreen) /* no support moving fullscreen windows by mouse */
-    return;
+  /* if (c->isfullscreen && */
+      /* !c->isfakefullscreen) /\* no support moving fullscreen windows by mouse *\/ */
+    /* return; */
   restack(selmon);
   ocx = c->x;
   ocy = c->y;
@@ -1472,9 +1472,9 @@ void resizemouse(const Arg *arg) {
 
   if (!(c = selmon->sel))
     return;
-  if (c->isfullscreen && !c->isfakefullscreen) /* no support resizing fullscreen
-                                                  windows by mouse */
-    return;
+  /* if (c->isfullscreen && !c->isfakefullscreen) /\* no support resizing fullscreen */
+                                                  /* windows by mouse *\/ */
+    /* return; */
   restack(selmon);
   ocx = c->x;
   ocy = c->y;

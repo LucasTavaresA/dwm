@@ -61,7 +61,7 @@ static const Rule rules[] = {
     {"firefox",          "Devtools",         NULL, 1 << 1,   1,         1,         0,               0,         0,        -1},
     {"MEGAsync",         "megasync",         NULL, 1 << 8,   1,         1,         0,               0,         0,        -1},
     {"Galculator",       "galculator",       NULL, 1 << 8,   1,         1,         0,               0,         0,        -1},
-    {"qutebrowser",      "qutebrowser",      NULL, 1 << 1,   0,         0,         1,               0,         0,        -1},
+    {"qutebrowser",      "qutebrowser",      NULL, 1 << 1,   0,         0,         0,               0,         0,        -1},
     {"Transmission-gtk", "transmission-gtk", NULL, 0,        1,         1,         0,               0,         0,        -1},
     /* Notificações, popups, etc. */
     {NULL, NULL, "Event Tester", 0, 1, 1, 0, 0, 1, -1},
