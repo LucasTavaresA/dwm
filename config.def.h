@@ -77,6 +77,7 @@ static const Rule rules[] = {
     {"Emacs",            "emacs",            NULL, 1 << 0,   0,         0,         0,               0,         0,        -1},
     {"firefox",          "Places",           NULL, 1 << 1,   1,         1,         0,               0,         0,        -1},
     {"firefox",          "Devtools",         NULL, 1 << 1,   1,         1,         0,               0,         0,        -1},
+    {"firefox",          "Navigator",        NULL, 1 << 1,   0,         0,         0,               0,         0,        -1},
     {"MEGAsync",         "megasync",         NULL, 1 << 8,   1,         1,         0,               0,         0,        -1},
     {"Galculator",       "galculator",       NULL, 1 << 8,   1,         1,         0,               0,         0,        -1},
     {"qutebrowser",      "qutebrowser",      NULL, 1 << 1,   0,         0,         0,               0,         0,        -1},
