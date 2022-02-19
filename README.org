@@ -54,3 +54,5 @@ patch -R < exemplo.diff
 - Adiciona cores para diferentes elementos da barra ([[https://dwm.suckless.org/patches/colorbar/][colorbar]])
 
 - Indica janelas abertas na tag ([[https://dwm.suckless.org/patches/clientindicators/][clientindicators]])
+
+- Indica tags ([[https://dwm.suckless.org/patches/underlinetags/][underlinetags]])

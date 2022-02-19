@@ -6,7 +6,7 @@ static const unsigned int snap = 32;    /* snap pixel */
 static const int showbar = 1;           /* 0 means no bar */
 static const int topbar = 1;            /* 0 means bottom bar */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
-static const unsigned int systrayonleft = 0;   	/* 0: systray in the right corner, >0: systray on left of status text */
+static const unsigned int systrayonleft = 0;   /* 0: systray in the right corner, >0: systray on left of status text */
 static const unsigned int systrayspacing = 0;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;     /* 0 means no systray */
@@ -15,7 +15,7 @@ static const int swallowfloating = 0; /* 1 means swallow floating windows by def
 static const int focusonwheel = 0;
 static const char *fonts[] = {
     "Fira Code:pixelsize=14:antialias=true:autohint=true",
-    "SauceCodePro Nerd Font:size=10",
+    "SauceCodePro Nerd Font:size=12",
     "Mono:weight=bold:size=16:antialias=true:hinting=true"
 };
 static const char dmenufont[] = "Fira Code:pixelsize=14:antialias=true:autohint=true";
@@ -29,9 +29,9 @@ static const char *colors[][3] = {
     [SchemeSel]      = {col_white, col_grey,  col_white},
     [SchemeUrg]      = {col_white, col_black, col_red},
 	[SchemeStatus]   = {col_white, col_black, "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
-	[SchemeTagsSel]  = {col_white, col_grey,  "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
+	[SchemeTagsSel]  = {col_white, col_black, "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
     [SchemeTagsNorm] = {col_white, col_black, "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
-    [SchemeInfoSel]  = {col_white, col_grey,  "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
+    [SchemeInfoSel]  = {col_white, col_black, "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
     [SchemeInfoNorm] = {col_white, col_black, "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
 };
 
@@ -51,6 +51,11 @@ static const char emacsname[] = "emacs@";
 
 /* tagging */
 static const char *tags[] = {"", "", "3", "4", "5"};
+
+static const unsigned int ulinepad = 0; /* horizontal padding between the underline and tag */
+static const unsigned int ulinestroke = 1; /* thickness / height of the underline */
+static const unsigned int ulinevoffset = 0; /* how far above the bottom of the bar the line should appear */
+static const int ulineall = 0; /* 1 to show underline on all tags, 0 for just the active ones */
 
 static const Rule rules[] = {
     /* xprop(1):
