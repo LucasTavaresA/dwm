@@ -52,3 +52,5 @@ patch -R < exemplo.diff
 - Não mostra tags sem janelas abertas ([[https://dwm.suckless.org/patches/hide_vacant_tags/][hide vacant tags]])
 
 - Adiciona cores para diferentes elementos da barra ([[https://dwm.suckless.org/patches/colorbar/][colorbar]])
+
+- Indica janelas abertas na tag ([[https://dwm.suckless.org/patches/clientindicators/][clientindicators]])
