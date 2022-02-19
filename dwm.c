@@ -80,46 +80,14 @@
 
 
 /* enums */
-enum {
-  CurResizeBR,
-  CurResizeBL,
-  CurResizeTR,
-  CurResizeTL,
-  CurNormal,
-  CurMove,
-  CurLast
-};                                         /* cursor */
-enum { SchemeNorm, SchemeSel, SchemeUrg }; /* color schemes */
-enum {
-  NetSupported,
-  NetWMName,
-  NetWMState,
-  NetWMCheck,
-  NetSystemTray, NetSystemTrayOP, NetSystemTrayOrientation, NetSystemTrayOrientationHorz,
-  NetWMFullscreen,
-  NetActiveWindow,
-  NetWMWindowType,
-  NetWMWindowTypeDialog,
-  NetClientList,
-  NetLast
-}; /* EWMH atoms */
+enum { CurResizeBR, CurResizeBL, CurResizeTR, CurResizeTL, CurNormal, CurMove, CurLast };                                         /* cursor */
+enum { SchemeNorm, SchemeSel, SchemeStatus, SchemeTagsSel, SchemeTagsNorm, SchemeInfoSel, SchemeInfoNorm, SchemeUrg }; /* color schemes */
+enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
+       NetSystemTray, NetSystemTrayOP, NetSystemTrayOrientation, NetSystemTrayOrientationHorz,
+       NetWMFullscreen, NetActiveWindow, NetWMWindowType, NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
 enum { Manager, Xembed, XembedInfo, XLast }; /* Xembed atoms */
-enum {
-  WMProtocols,
-  WMDelete,
-  WMState,
-  WMTakeFocus,
-  WMLast
-}; /* default atoms */
-enum {
-  ClkTagBar,
-  ClkLtSymbol,
-  ClkStatusText,
-  ClkWinTitle,
-  ClkClientWin,
-  ClkRootWin,
-  ClkLast
-}; /* clicks */
+enum { WMProtocols, WMDelete, WMState, WMTakeFocus, WMLast }; /* default atoms */
+enum { ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, ClkRootWin, ClkLast }; /* clicks */
 
 typedef union {
   int i;
@@ -1009,7 +977,7 @@ void drawbar(Monitor *m) {
 
   /* draw status first so it can be overdrawn by tags later */
   if (m == selmon) { /* status is only drawn on selected monitor */
-    drw_setscheme(drw, scheme[SchemeNorm]);
+		drw_setscheme(drw, scheme[SchemeStatus]);
 		tw = TEXTW(stext) - lrpad / 2;
 		drw_text(drw, m->ww - tw - stw, 0, tw, bh, lrpad / 2 - 2, stext, 0);
   }
@@ -1026,23 +994,22 @@ void drawbar(Monitor *m) {
 		if(!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
 			continue;
     w = TEXTW(tags[i]);
-    drw_setscheme(
-        drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
+		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeTagsSel : SchemeTagsNorm]);
     drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
     x += w;
   }
   w = blw = TEXTW(m->ltsymbol);
-  drw_setscheme(drw, scheme[SchemeNorm]);
+	drw_setscheme(drw, scheme[SchemeTagsNorm]);
   x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
 
 	if ((w = m->ww - tw - stw - x) > bh) {
     if (m->sel) {
-      drw_setscheme(drw, scheme[m == selmon ? SchemeSel : SchemeNorm]);
+			drw_setscheme(drw, scheme[m == selmon ? SchemeInfoSel : SchemeInfoNorm]);
       drw_text(drw, x, 0, w, bh, lrpad / 2, m->sel->name, 0);
       if (m->sel->isfloating)
         drw_rect(drw, x + boxs, boxs, boxw, boxw, m->sel->isfixed, 0);
     } else {
-      drw_setscheme(drw, scheme[SchemeNorm]);
+			drw_setscheme(drw, scheme[SchemeInfoNorm]);
       drw_rect(drw, x, 0, w, bh, 1, 1);
     }
   }
