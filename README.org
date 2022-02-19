@@ -48,3 +48,5 @@ patch -R < exemplo.diff
 - Troca janela ou foca tags adjecentes ([[https://dwm.suckless.org/patches/adjacenttag/][adjacenttags]])
 
 - ([[https://dwm.suckless.org/patches/systray/][systray]])
+
+- Não mostra tags sem janelas abertas ([[https://dwm.suckless.org/patches/hide_vacant_tags/][hide vacant tags]])
