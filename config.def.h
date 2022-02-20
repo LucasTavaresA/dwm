@@ -16,7 +16,7 @@ static const int user_bh = 16; /* 0 means that dwm will calculate bar height, >=
 static const int swallowfloating = 0; /* 1 means swallow floating windows by default */
 static const int focusonwheel = 0;
 static const char *fonts[] = {
-    "Fira Code:pixelsize=14:antialias=true:autohint=true",
+    "Fira Code:pixelsize=16:antialias=true:autohint=true",
     "SauceCodePro Nerd Font:size=12",
     "Mono:weight=bold:size=16:antialias=true:hinting=true"
 };
@@ -52,7 +52,7 @@ static const char emacsclient[] = "emacsclient";
 static const char emacsname[] = "emacs@";
 
 /* tagging */
-static const char *tags[] = {"", "", "", "", "-"};
+static const char *tags[] = {"", "", "", "", ""};
 
 static const unsigned int ulinepad = 0; /* horizontal padding between the underline and tag */
 static const unsigned int ulinestroke = 1; /* thickness / height of the underline */
@@ -71,18 +71,18 @@ static const Rule rules[] = {
 /*   class               instance            title tagmask   iscentered isfloating isfakefullscreen isterminal noswallow mon*/
     {"Gimp",             NULL,               NULL, 0,        0,         0,         0,               0,         0,        -1},
     {"gimp",             NULL,               NULL, 0,        0,         0,         0,               0,         0,        -1},
-    {"Firefox",          NULL,               NULL, 1 << 0,   0,         0,         1,               0,         0,        -1},
+    {"Firefox",          NULL,               NULL, 1 << 2,   0,         0,         1,               0,         0,        -1},
     {"ncmpcpp",          NULL,               NULL, 0,        1,         1,         0,               0,         1,        -1},
     {"pulsemixer",       NULL,               NULL, 0,        1,         1,         0,               0,         1,        -1},
-    {"st",               NULL,               NULL, 1 << 1,   1,         0,         0,               1,         0,        -1},
+    {"st",               NULL,               NULL, 1 << 3,   1,         0,         0,               1,         0,        -1},
     {"stscratchpad",     NULL,               NULL, SPTAG(0), 1,         0,         0,               1,         0,        -1},
-    {"Emacs",            "emacs",            NULL, 1 << 2,   0,         0,         0,               0,         1,        -1},
-    {"firefox",          "Places",           NULL, 1 << 0,   1,         1,         0,               0,         0,        -1},
-    {"firefox",          "Devtools",         NULL, 1 << 0,   1,         1,         0,               0,         0,        -1},
-    {"firefox",          "Navigator",        NULL, 1 << 0,   0,         0,         0,               0,         0,        -1},
+    {"Emacs",            "emacs",            NULL, 1 << 4,   0,         0,         0,               0,         1,        -1},
+    {"firefox",          "Places",           NULL, 1 << 2,   1,         1,         0,               0,         0,        -1},
+    {"firefox",          "Devtools",         NULL, 1 << 2,   1,         1,         0,               0,         0,        -1},
+    {"firefox",          "Navigator",        NULL, 1 << 2,   0,         0,         0,               0,         0,        -1},
     {"MEGAsync",         "megasync",         NULL, 1 << 8,   1,         1,         0,               0,         0,        -1},
     {"Galculator",       "galculator",       NULL, 1 << 8,   1,         1,         0,               0,         0,        -1},
-    {"qutebrowser",      "qutebrowser",      NULL, 1 << 0,   0,         0,         0,               0,         0,        -1},
+    {"qutebrowser",      "qutebrowser",      NULL, 1 << 2,   0,         0,         0,               0,         0,        -1},
     {"Transmission-gtk", "transmission-gtk", NULL, 0,        1,         1,         0,               0,         0,        -1},
     /* Notificações, popups, etc. */
     {NULL, NULL, "Event Tester", 0, 1, 1, 0, 0, 1, -1},
