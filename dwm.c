@@ -220,9 +220,11 @@ static void maprequest(XEvent *e);
 static void monocle(Monitor *m);
 static void movemouse(const Arg *arg);
 static unsigned int nexttag(void);
+static unsigned int viewnexttag(void);
 static Client *nexttiled(Client *c);
 static void pop(Client *);
 static unsigned int prevtag(void);
+static unsigned int viewprevtag(void);
 static void propertynotify(XEvent *e);
 static Monitor *recttomon(int x, int y, int w, int h);
 static void removesystrayicon(Client *i);
@@ -1475,6 +1477,29 @@ unsigned int nexttag(void) {
   return seltag == (1 << (LENGTH(tags) - 1)) ? 1 : seltag << 1;
 }
 
+unsigned int
+viewnexttag(void)
+{
+	unsigned int seltag = selmon->tagset[selmon->seltags];
+	unsigned int usedtags = 0;
+	Client *c = selmon->clients;
+
+	if (!c)
+		return seltag;
+
+	/* skip vacant tags */
+	do {
+		usedtags |= c->tags;
+		c = c->next;
+	} while (c);
+
+	do {
+		seltag = seltag == (1 << (LENGTH(tags) - 1)) ? 1 : seltag << 1;
+	} while (!(seltag & usedtags));
+
+	return seltag;
+}
+
 Client *nexttiled(Client *c) {
   for (; c && (c->isfloating || !ISVISIBLE(c)); c = c->next)
     ;
@@ -1491,6 +1516,28 @@ void pop(Client *c) {
 unsigned int prevtag(void) {
   unsigned int seltag = selmon->tagset[selmon->seltags];
   return seltag == 1 ? (1 << (LENGTH(tags) - 1)) : seltag >> 1;
+}
+
+unsigned int
+viewprevtag(void)
+{
+	unsigned int seltag = selmon->tagset[selmon->seltags];
+	unsigned int usedtags = 0;
+	Client *c = selmon->clients;
+	if (!c)
+		return seltag;
+
+	/* skip vacant tags */
+	do {
+		usedtags |= c->tags;
+		c = c->next;
+	} while (c);
+
+	do {
+		seltag = seltag == 1 ? (1 << (LENGTH(tags) - 1)) : seltag >> 1;
+	} while (!(seltag & usedtags));
+
+	return seltag;
 }
 
 void propertynotify(XEvent *e) {
@@ -2824,9 +2871,9 @@ Client *swallowingclient(Window w) {
   return NULL;
 }
 
-void viewnext(const Arg *arg) { view(&(const Arg){.ui = nexttag()}); }
+void viewnext(const Arg *arg) { view(&(const Arg){.ui = viewnexttag()}); }
 
-void viewprev(const Arg *arg) { view(&(const Arg){.ui = prevtag()}); }
+void viewprev(const Arg *arg) { view(&(const Arg){.ui = viewprevtag()}); }
 
 Client *wintoclient(Window w) {
   Client *c;
