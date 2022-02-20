@@ -64,3 +64,5 @@ patch -R < exemplo.diff
 - Divide status em dois posicionando uma parte no meio da tela ([[https://dwm.suckless.org/patches/splitstatus/][splitstatus]])
 
 - Adiciona uma terceira divisão no status *Patch deve ser aplicado apos o splitstaus* ([[https://github.com/LucasTavaresA/dwmblocks/blob/main/patches/triplestatus.diff][triplestatus]])
+
+- Segue programas para a tag onde abrem ([[https://dwm.suckless.org/patches/switchtotag/][switchtotag]])

@@ -116,6 +116,7 @@ struct Client {
   int basew, baseh, incw, inch, maxw, maxh, minw, minh;
   int bw, oldbw;
   unsigned int tags;
+	unsigned int switchtotag;
   int isfixed, iscentered, isfloating, isurgent, neverfocus, oldstate,
       isfullscreen, isfakefullscreen, isterminal, noswallow;
   pid_t pid;
@@ -165,6 +166,7 @@ typedef struct {
   const char *instance;
   const char *title;
   unsigned int tags;
+	unsigned int switchtotag;
   int iscentered;
   int isfloating;
   int isfakefullscreen;
@@ -390,6 +392,11 @@ void applyrules(Client *c) {
         ;
       if (m)
         c->mon = m;
+			if (r->switchtotag) {
+				Arg a = { .ui = r->tags };
+				c->switchtotag = selmon->tagset[selmon->seltags];
+				view(&a);
+			}
     }
   }
   if (ch.res_class)
@@ -2335,6 +2342,10 @@ void unmanage(Client *c, int destroyed) {
     focus(NULL);
     updateclientlist();
   }
+	if (c->switchtotag) {
+		Arg a = { .ui = c->switchtotag };
+		view(&a);
+	}
 }
 
 void unmapnotify(XEvent *e) {
