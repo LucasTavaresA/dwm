@@ -62,3 +62,5 @@ patch -R < exemplo.diff
 - Removido titulo da janela aberta ([[https://dwm.suckless.org/patches/notitle/][notitle]])
 
 - Divide status em dois posicionando uma parte no meio da tela ([[https://dwm.suckless.org/patches/splitstatus/][splitstatus]])
+
+- Adiciona uma terceira divisão no status *Patch deve ser aplicado apos o splitstaus* ([[https://github.com/LucasTavaresA/dwmblocks/blob/main/patches/triplestatus.diff][triplestatus]])
