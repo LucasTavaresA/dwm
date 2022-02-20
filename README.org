@@ -2,6 +2,8 @@
 
 *Controlada usando a minha configuração do [[https://github.com/LucasTavaresA/dotfiles/blob/main/.config/sxhkd/sxhkdrc][sxhkd]]*
 
+*Usando a minha build da barra [[https://github.com/LucasTavaresA/dwmblocks][dwmblocks]]*
+
 [[./screenshot.png]]
 
 ** Patches
