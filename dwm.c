@@ -20,7 +20,6 @@
  *
  * To understand everything else, start reading main().
  */
-#include <ctype.h> /* for making tab label lowercase, very tiny standard library */
 #include <X11/Xatom.h>
 #include <X11/Xlib.h>
 #include <X11/Xproto.h>
@@ -350,8 +349,6 @@ struct Pertag {
   int showbars[LENGTH(tags) + 1];   /* display bar for the current tag */
 };
 
-unsigned int tagw[LENGTH(tags)];
-
 /* compile-time check if all tags fit into an unsigned int bit array. */
 struct NumTags {
   char limitexceeded[LENGTH(tags) > 31 ? -1 : 1];
@@ -657,7 +654,7 @@ void buttonpress(XEvent *e) {
 			/* Do not reserve space for vacant tags */
 			if (!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
 				continue;
-			x += tagw[i];
+			x += TEXTW(tags[i]);
 		} while (ev->x >= x && ++i < LENGTH(tags));
     if (i < LENGTH(tags)) {
       click = ClkTagBar;
@@ -970,8 +967,6 @@ void drawbar(Monitor *m) {
 	int x, w, tw = 0, stw = 0;
   unsigned int i, occ = 0, urg = 0;
   Client *c;
-	char tagdisp[64];
-	char *masterclientontag[LENGTH(tags)];
 	char *mstext;
 	char *rstext;
 	int msx;
@@ -989,20 +984,9 @@ void drawbar(Monitor *m) {
     drw_text(drw, m->ww - tw - stw, 0, tw, bh, lrpad / 2 - 2, stext, 0);
   }
 
-	for (i = 0; i < LENGTH(tags); i++)
-		masterclientontag[i] = NULL;
-
 	resizebarwin(m);
   for (c = m->clients; c; c = c->next) {
     occ |= c->tags;
-		for (i = 0; i < LENGTH(tags); i++)
-			if (!masterclientontag[i] && c->tags & (1<<i)) {
-				XClassHint ch = { NULL, NULL };
-				XGetClassHint(dpy, c->win, &ch);
-				masterclientontag[i] = ch.res_class;
-				if (lcaselbl)
-					masterclientontag[i][0] = tolower(masterclientontag[i][0]);
-			}
     if (c->isurgent)
       urg |= c->tags;
   }
@@ -1012,14 +996,10 @@ void drawbar(Monitor *m) {
 		/* Do not draw vacant tags */
 		if(!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
 			continue;
-		if (masterclientontag[i])
-			snprintf(tagdisp, 64, ptagf, tags[i], masterclientontag[i]);
-		else
-			snprintf(tagdisp, 64, etagf, tags[i]);
-		masterclientontag[i] = tagdisp;
-		tagw[i] = w = TEXTW(masterclientontag[i]);
+
+		w = TEXTW(tags[i]);
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeTagsSel : SchemeTagsNorm]);
-		drw_text(drw, x, 0, w, bh, lrpad / 2, masterclientontag[i], urg & 1 << i);
+		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
 		if (ulineall || m->tagset[m->seltags] & 1 << i) /* if there are conflicts, just move these lines directly underneath both 'drw_setscheme' and 'drw_text' :) */
 			drw_rect(drw, x + ulinepad, bh - ulinestroke - ulinevoffset, w - (ulinepad * 2), ulinestroke, 1, 0);
 

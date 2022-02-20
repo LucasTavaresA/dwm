@@ -61,6 +61,4 @@ patch -R < exemplo.diff
 
 - Removido titulo da janela aberta ([[https://dwm.suckless.org/patches/notitle/][notitle]])
 
-- Nome da janela mestre na tag ([[https://dwm.suckless.org/patches/taglabels/][taglabels]])
-
 - Divide status em dois posicionando uma parte no meio da tela ([[https://dwm.suckless.org/patches/splitstatus/][splitstatus]])
