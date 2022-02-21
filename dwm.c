@@ -1031,10 +1031,10 @@ void drawbar(Monitor *m) {
 	if (m == selmon) { /* status is only drawn on selected monitor */
 		rstext = strdup(stext);
 		if (splitstatus) {
-			mstext = strsep(&rstext, splitdelim);
+			mstext = strsep(&rstext, fsplitdelim);
 			msstext = strsep(&mstext, ssplitdelim);
-			msx = (m->ww - TEXTW(mstext) + lrpad) / 2; /* x position of middle status text */
-			mssx = (m->ww - TEXTW(msstext) + lrpad) / 4; /* x position of middle status text */
+			msx = (m->ww - TEXTW(mstext) + lrpad) / fsplitratio; /* x position of first status text */
+			mssx = (m->ww - TEXTW(msstext) + lrpad) / ssplitratio; /* x position of second status text */
 			drw_text(drw, msx, 0, TEXTW(mstext) - lrpad, bh, 0, mstext, 0);
 			drw_text(drw, mssx, 0, TEXTW(msstext) - lrpad, bh, 0, msstext, 0);
     }
