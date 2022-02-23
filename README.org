@@ -57,8 +57,6 @@ patch -R < exemplo.diff
 
 - Indica janelas abertas na tag ([[https://dwm.suckless.org/patches/clientindicators/][clientindicators]])
 
-- Indica tags ([[https://dwm.suckless.org/patches/underlinetags/][underlinetags]])
-
 - Removido titulo da janela aberta ([[https://dwm.suckless.org/patches/notitle/][notitle]])
 
 - Divide status em dois posicionando uma parte no meio da tela ([[https://dwm.suckless.org/patches/splitstatus/][splitstatus]]) *Modificado para dividir a barra em tres*

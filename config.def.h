@@ -34,7 +34,7 @@ static const char *colors[][3] = {
     [SchemeSel]      = {col_white, col_grey,  col_white},
     [SchemeUrg]      = {col_white, col_black, col_red},
 	[SchemeStatus]   = {col_white, col_black, "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
-	[SchemeTagsSel]  = {col_white, col_black, "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
+	[SchemeTagsSel]  = {col_white, col_grey,  "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
     [SchemeTagsNorm] = {col_white, col_black, "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
     [SchemeInfoSel]  = {col_white, col_black, "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
     [SchemeInfoNorm] = {col_white, col_black, "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
@@ -57,11 +57,6 @@ static const char emacsname[] = "emacs@";
 /* tagging */
 static const char *tags[] = {"", "", "", "", "", ""};
 
-static const unsigned int ulinepad = 0; /* horizontal padding between the underline and tag */
-static const unsigned int ulinestroke = 1; /* thickness / height of the underline */
-static const unsigned int ulinevoffset = 0; /* how far above the bottom of the bar the line should appear */
-static const int ulineall = 0; /* 1 to show underline on all tags, 0 for just the active ones */
-
 static const Rule rules[] = {
     /* xprop(1):
      *	WM_CLASS(STRING) = instance, class
@@ -71,7 +66,7 @@ static const Rule rules[] = {
     {"Firefox",          NULL,               NULL, 1 << 1,   1,          0,         0,         1,               0,         0,        -1},
     {"ncmpcpp",          NULL,               NULL, 0,        0,          1,         1,         0,               0,         1,        -1},
     {"pulsemixer",       NULL,               NULL, 0,        0,          1,         1,         0,               0,         1,        -1},
-    {"st",               NULL,               NULL, 0,        0,          1,         0,         0,               1,         0,        -1},
+    {"st",               NULL,               NULL, 1 << 2,   0,          1,         0,         0,               1,         0,        -1},
     {"stscratchpad",     NULL,               NULL, SPTAG(0), 0,          1,         0,         0,               1,         0,        -1},
     {"mpv",              "gl",               NULL, 1 << 3,   1,          1,         0,         0,               1,         0,        -1},
     {"Gimp",             "gimp",             NULL, 1 << 4,   1,          0,         0,         0,               0,         0,        -1},
