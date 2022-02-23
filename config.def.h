@@ -53,7 +53,7 @@ static const char emacsclient[] = "emacsclient";
 static const char emacsname[] = "emacs@";
 
 /* tagging */
-static const char *tags[] = {"", "", "", "", "", ""};
+static const char *tags[] = {"", "", "", "", "", "", ""};
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -66,9 +66,9 @@ static const Rule rules[] = {
     {"pulsemixer",       NULL,               NULL, 0,        0,          1,         1,         0,               0,         1,        -1},
     {"st",               NULL,               NULL, 1 << 2,   0,          1,         0,         0,               1,         0,        -1},
     {"stscratchpad",     NULL,               NULL, SPTAG(0), 0,          1,         0,         0,               1,         0,        -1},
-    {"mpv",              "gl",               NULL, 1 << 3,   1,          1,         0,         0,               1,         0,        -1},
-    {"Gimp",             "gimp",             NULL, 1 << 4,   1,          0,         0,         0,               0,         0,        -1},
-    {"Emacs",            "emacs",            NULL, 1 << 2,   1,          0,         0,         0,               0,         1,        -1},
+    {"mpv",              "gl",               NULL, 1 << 4,   1,          1,         0,         0,               1,         0,        -1},
+    {"Gimp",             "gimp",             NULL, 1 << 5,   1,          0,         0,         0,               0,         0,        -1},
+    {"Emacs",            "emacs",            NULL, 1 << 3,   1,          0,         0,         0,               0,         1,        -1},
     {"firefox",          "Places",           NULL, 1 << 1,   1,          1,         1,         0,               0,         0,        -1},
     {"firefox",          "Devtools",         NULL, 1 << 1,   1,          1,         1,         0,               0,         0,        -1},
     {"firefox",          "Navigator",        NULL, 1 << 1,   1,          0,         0,         0,               0,         0,        -1},
