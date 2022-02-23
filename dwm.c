@@ -975,10 +975,8 @@ void drawbar(Monitor *m) {
   unsigned int i, occ = 0, urg = 0;
   Client *c;
 	char *mstext;
-	char *msstext;
 	char *rstext;
 	int msx;
-	int mssx;
 
   if (!m->showbar)
     return;
@@ -1030,11 +1028,8 @@ void drawbar(Monitor *m) {
 		rstext = strdup(stext);
 		if (splitstatus) {
 			mstext = strsep(&rstext, fsplitdelim);
-			msstext = strsep(&mstext, ssplitdelim);
 			msx = (m->ww - TEXTW(mstext) + lrpad) / fsplitratio; /* x position of first status text */
-			mssx = (m->ww - TEXTW(msstext) + lrpad) / ssplitratio; /* x position of second status text */
 			drw_text(drw, msx, 0, TEXTW(mstext) - lrpad, bh, 0, mstext, 0);
-			drw_text(drw, mssx, 0, TEXTW(msstext) - lrpad, bh, 0, msstext, 0);
     }
 		tw = TEXTW(rstext) - lrpad + 2; /* 2px right padding */
 		drw_text(drw, m->ww - tw - stw, 0, tw, bh, 0, rstext, 0);
