@@ -19,7 +19,7 @@ static const int focusonwheel = 0;
 static const char *fonts[] = {
     "Fira Code:pixelsize=16:antialias=true:autohint=true",
     "SauceCodePro Nerd Font:size=12",
-    "Mono:weight=bold:size=16:antialias=true:hinting=true"
+    "Monospace:size=12:antialias=true:hinting=true"
 };
 static const char dmenufont[] = "Fira Code:pixelsize=14:antialias=true:autohint=true";
 static const char col_black[] = "#000000";
@@ -27,7 +27,7 @@ static const char col_grey[]  = "#444444";
 static const char col_white[] = "#FFFFFF";
 static const char col_red[]   = "#FF0000";
 static const char *colors[][3] = {
-    /*                  fg         bg         border   */
+                     /* fg         bg         border */
     [SchemeNorm]     = {col_white, col_black, col_grey},
     [SchemeSel]      = {col_white, col_grey,  col_white},
     [SchemeUrg]      = {col_white, col_black, col_red},
@@ -53,7 +53,7 @@ static const char emacsclient[] = "emacsclient";
 static const char emacsname[] = "emacs@";
 
 /* tagging */
-static const char *tags[] = {"", "", "", "", "", "", ""};
+static const char *tags[] = {"", "", "", "", "", "", ""};
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -69,12 +69,12 @@ static const Rule rules[] = {
     {"mpv",              "gl",               NULL, 1 << 4,   1,          1,         0,         0,               1,         0,        -1},
     {"Gimp",             "gimp",             NULL, 1 << 5,   1,          0,         0,         0,               0,         0,        -1},
     {"Emacs",            "emacs",            NULL, 1 << 3,   1,          0,         0,         0,               0,         1,        -1},
-    {"firefox",          "Places",           NULL, 1 << 1,   1,          1,         1,         0,               0,         0,        -1},
-    {"firefox",          "Devtools",         NULL, 1 << 1,   1,          1,         1,         0,               0,         0,        -1},
-    {"firefox",          "Navigator",        NULL, 1 << 1,   1,          0,         0,         0,               0,         0,        -1},
+    {"firefox",          "Places",           NULL, 1 << 1,   1,          1,         1,         1,               0,         0,        -1},
+    {"firefox",          "Devtools",         NULL, 1 << 1,   1,          1,         1,         1,               0,         0,        -1},
+    {"firefox",          "Navigator",        NULL, 1 << 1,   1,          0,         0,         1,               0,         0,        -1},
     {"MEGAsync",         "megasync",         NULL, 0,        0,          1,         1,         0,               0,         0,        -1},
     {"Galculator",       "galculator",       NULL, 0,        0,          1,         1,         0,               0,         0,        -1},
-    {"qutebrowser",      "qutebrowser",      NULL, 1 << 1,   1,          0,         0,         0,               0,         0,        -1},
+    {"qutebrowser",      "qutebrowser",      NULL, 1 << 1,   1,          0,         0,         1,               0,         0,        -1},
     {"Transmission-gtk", "transmission-gtk", NULL, 0,        0,          1,         1,         0,               0,         0,        -1},
     /* Notificações, popups, etc. */
     {NULL, NULL, "Event Tester", 0, 0, 1, 1, 0, 0, 1, -1},
@@ -111,6 +111,8 @@ static const Layout layouts[] = {
 /* { Mod4Mask|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG}}, */
 /* { Mod4Mask|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG}}, */
 
+#define HOLDKEY 0xffe9 // 0 - disable; 0xffe9 - Mod1Mask; 0xffeb - Mod4Mask
+
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char *[]) { "/bin/sh", "-c", cmd, NULL }}
 
@@ -143,6 +145,7 @@ static const Layout layouts[] = {
 /* TAGKEYS(                XK_1,                             0) */
 /* TAGKEYS(                XK_2,                             1) */
 /* TAGKEYS(                XK_3,                             2) */
+	/* { 0,                            HOLDKEY,   holdbar,        {0} }, */
 /* }; */
 
 /* button definitions */
