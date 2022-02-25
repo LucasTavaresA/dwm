@@ -98,8 +98,11 @@ static const int nmaster = 1;    /* number of clients in master area */
 static const int resizehints = 0; /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 0; /* 1 will force focus on the fullscreen window */
 
-static const Layout layouts[] = {
+static const Layout mlayout[] = {
     {"  ", monocle},
+};
+
+static const Layout layouts[] = {
     {"┬┬┬", bstack},
     {" ├─", tile},
     {"─┼─", gaplessgrid},
@@ -163,6 +166,8 @@ static Button buttons[] = {
     {ClkTagBar,    Mod4Mask, Button3, toggletag,   {0}},
 };
 
+void setmonocle(const Arg *arg) { setlayout(&((Arg) { .v = &mlayout[arg->i]})); }
+
 void setlayoutex(const Arg *arg) { setlayout(&((Arg){.v = &layouts[arg->i]})); }
 
 void viewex(const Arg *arg) { view(&((Arg){.ui = 1 << arg->ui})); }
@@ -181,7 +186,7 @@ void tagall(const Arg *arg) { tag(&((Arg){.ui = ~0})); }
 /* signum must be greater than 0 */
 /* trigger signals using `xsetroot -name "fsignal:<signame> [<type> <value>]"` */
 static Signal signals[] = {
-    /* signum           function */
+    /* signum          function */
     {"focusstack",     focusstack},
     {"setmfact",       setmfact},
     {"setcfact",       setcfact},
@@ -201,6 +206,7 @@ static Signal signals[] = {
     {"killclient",     killclient},
     {"setlayout",      setlayout},
     {"setlayoutex",    setlayoutex},
+    {"setmonocle",     setmonocle },
     {"layoutscroll",   layoutscroll},
     {"quit",           quit},
     {"togglebar",      togglebar},
