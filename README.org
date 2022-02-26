@@ -62,3 +62,5 @@ patch -R < exemplo.diff
 - Segue programas para a tag onde abrem ([[https://dwm.suckless.org/patches/switchtotag/][switchtotag]])
 
 - Regra que fixa janela a todas a tags abertas ([[https://dwm.suckless.org/patches/sticky/][sticky]])
+
+- Troca as posições da janelas mantendo o foco na mesma posição ([[https://dwm.suckless.org/patches/inplacerotate/][inplacerotate]])

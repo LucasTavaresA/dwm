@@ -118,15 +118,19 @@ static const Layout layouts[] = {
 /* modifier           key             function          argument */
 /* { Mod4Mask|ShiftMask,   XK_Return,      spawn,            {.v = st } }, */
 /* { Mod4Mask,             XK_t,           togglefloating,   {0} }, */
-/* { MODKEY,               XK_s,           togglesticky,     {0} }, */
+/* { Mod4Mask,             XK_s,           togglesticky,     {0} }, */
 /* { Mod4Mask|ShiftMask,   XK_space,       togglebar,        {0} }, */
 /* { Mod4Mask,             XK_Tab,         focusstack,       {.i = +1 } }, */
 /* { Mod4Mask,             XK_Right,       focusstack,       {.i = +1 } }, */
 /* { Mod4Mask,             XK_Left,        focusstack,       {.i = -1 } }, */
-/* { MODKEY,               XK_Right,       viewnext,         {0} }, */
-/* { MODKEY,               XK_Left,        viewprev,         {0} }, */
-/* { MODKEY|ShiftMask,     XK_Right,       tagtonext,        {0} }, */
-/* { MODKEY|ShiftMask,     XK_Left,        tagtoprev,        {0} }, */
+/* { Mod4Mask|ShiftMask,   XK_j,           inplacerotate,    {.i = +1} }, */
+/* { Mod4Mask|ShiftMask,   XK_k,           inplacerotate,    {.i = -1} }, */
+/* { Mod4Mask|ShiftMask,   XK_h,           inplacerotate,    {.i = +2} }, */
+/* { Mod4Mask|ShiftMask,   XK_l,           inplacerotate,    {.i = -2} }, */
+/* { Mod4Mask,             XK_Right,       viewnext,         {0} }, */
+/* { Mod4Mask,             XK_Left,        viewprev,         {0} }, */
+/* { Mod4Mask|ShiftMask,   XK_Right,       tagtonext,        {0} }, */
+/* { Mod4Mask|ShiftMask,   XK_Left,        tagtoprev,        {0} }, */
 /* { Mod1Mask,             XK_Down,        setcfact,         {.f = +0.25} }, */
 /* { Mod1Mask,             XK_Up,          setcfact,         {.f = -0.25} }, */
 /* { Mod1Mask,             XK_Left,        setmfact,         {.f = -0.05} }, */
@@ -178,6 +182,7 @@ void tagall(const Arg *arg) { tag(&((Arg){.ui = ~0})); }
 static Signal signals[] = {
     /* signum          function */
     {"focusstack",     focusstack},
+    {"inplacerotate",  inplacerotate},
     {"setmfact",       setmfact},
     {"setcfact",       setcfact},
     {"togglefloating", togglefloating},
