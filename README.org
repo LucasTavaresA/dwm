@@ -31,8 +31,6 @@ patch -R < exemplo.diff
 
 - Diferentes layouts para cada tag ([[https://dwm.suckless.org/patches/pertag/][pertag]])
 
-- ([[https://dwm.suckless.org/patches/scratchpads/][scratchpads]])
-
 - Programas abertos pelo terminal tomam o lugar do mesmo ate serem fechados ([[https://dwm.suckless.org/patches/swallow/][swallow]])
 
 - Mudar tamanho de janelas dentro da stack ([[https://dwm.suckless.org/patches/cfacts/][cfacts]])

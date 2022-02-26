@@ -38,22 +38,12 @@ static const char *colors[][3] = {
     [SchemeInfoNorm] = {col_white, col_black, "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
 };
 
-typedef struct {
-  const char *name;
-  const void *cmd;
-} Sp;
-const char *sp1[] = {"st", "-n", "stscratchpad", NULL};
-static Sp scratchpads[] = {
-    /* name          cmd  */
-    {"stscratchpad", sp1},
-};
-
 /* swallow emacs */
 static const char emacsclient[] = "emacsclient";
 static const char emacsname[] = "emacs@";
 
 /* tagging */
-static const char *tags[] = {"", "", "", "", "", "", "", ""};
+static const char *tags[] = {"", "", "", "", "", "", ""};
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -63,34 +53,33 @@ static const Rule rules[] = {
 /*   class               instance            title tag mask  switchtotag iscentered isfloating isfakefullscreen isterminal noswallow mon*/
     {"ncmpcpp",          NULL,               NULL, 0,        0,          1,         1,         0,               0,         1,        -1},
     {"pulsemixer",       NULL,               NULL, 0,        0,          1,         1,         0,               0,         1,        -1},
-    /* {"st",               NULL,               NULL, 1 << 2,   1,          1,         0,         0,               1,         0,        -1}, */
-    {NULL,               "stscratchpad",     NULL, SPTAG(0), 0,          1,         0,         0,               1,         0,        -1},
-    {"mpv",              "gl",               NULL, 1 << 4,   1,          1,         0,         0,               0,         0,        -1},
-    {"Gimp",             "gimp",             NULL, 1 << 6,   1,          0,         0,         0,               0,         0,        -1},
+    {"MEGAsync",         "megasync",         NULL, 0,        0,          1,         1,         0,               0,         0,        -1},
+    {"Transmission-gtk", "transmission-gtk", NULL, 0,        0,          1,         1,         0,               0,         0,        -1},
+    {"firefox",          "Places",           NULL, 1 << 2,   1,          1,         1,         1,               0,         0,        -1},
+    {"Firefox",          NULL,               NULL, 1 << 2,   1,          0,         0,         1,               0,         0,        -1},
+    {"firefox",          "Devtools",         NULL, 1 << 2,   1,          1,         1,         1,               0,         0,        -1},
+    {"firefox",          "Navigator",        NULL, 1 << 2,   1,          0,         0,         1,               0,         0,        -1},
+    {"qutebrowser",      "qutebrowser",      NULL, 1 << 2,   1,          0,         0,         1,               0,         0,        -1},
     {"Emacs",            "emacs",            NULL, 1 << 3,   1,          0,         0,         0,               0,         1,        -1},
-    {"firefox",          "Places",           NULL, 1 << 1,   1,          1,         1,         1,               0,         0,        -1},
-    {"Firefox",          NULL,               NULL, 1 << 1,   1,          0,         0,         1,               0,         0,        -1},
-    {"firefox",          "Devtools",         NULL, 1 << 1,   1,          1,         1,         1,               0,         0,        -1},
-    {"firefox",          "Navigator",        NULL, 1 << 1,   1,          0,         0,         1,               0,         0,        -1},
-    {"qutebrowser",      "qutebrowser",      NULL, 1 << 1,   1,          0,         0,         1,               0,         0,        -1},
+    {"mpv",              "gl",               NULL, 1 << 1,   1,          1,         0,         0,               0,         0,        -1},
     {"discord",          "discord",          NULL, 1 << 5,   1,          1,         0,         1,               0,         0,        -1},
     {"TelegramDesktop",  "telegram-desktop", NULL, 1 << 5,   1,          1,         0,         1,               0,         0,        -1},
-    {"MEGAsync",         "megasync",         NULL, 0,        0,          1,         1,         0,               0,         0,        -1},
-    {"Galculator",       "galculator",       NULL, 0,        0,          1,         1,         0,               0,         0,        -1},
-    {"Transmission-gtk", "transmission-gtk", NULL, 0,        0,          1,         1,         0,               0,         0,        -1},
+    {"Gimp",             "gimp",             NULL, 1 << 4,   1,          0,         0,         0,               0,         0,        -1},
+    {"st",               "st",               NULL, 0,        0,          1,         0,         0,               1,         0,        -1},
+    {"Galculator",       "galculator",       NULL, ~0,       0,          1,         1,         0,               0,         0,        -1},
     /* Notificações, popups, etc. */
     {NULL, NULL, "Event Tester",                   0,        0,          1,         1,         0,               0,         1,        -1},
-    {"confirm", NULL, NULL,                        1 << 8,   0,          1,         1,         0,               0,         0,        -1},
-    {"dialog", NULL, NULL,                         1 << 8,   0,          1,         1,         0,               0,         0,        -1},
-    {"download", NULL, NULL,                       1 << 8,   0,          1,         1,         0,               0,         0,        -1},
-    {"error", NULL, NULL,                          1 << 8,   0,          1,         1,         0,               0,         0,        -1},
-    {"MPlayer", NULL, NULL,                        1 << 8,   0,          1,         1,         0,               0,         0,        -1},
-    {"splash", NULL, NULL,                         1 << 8,   0,          1,         1,         0,               0,         0,        -1},
-    {"toolbar", NULL, NULL,                        1 << 8,   0,          1,         1,         0,               0,         0,        -1},
-    {"notification", NULL, NULL,                   1 << 8,   0,          1,         1,         0,               0,         0,        -1},
-    {"pinentry-gtk-2", NULL, NULL,                 1 << 8,   0,          1,         1,         0,               0,         0,        -1},
-    {"file_progress", NULL, NULL,                  1 << 8,   0,          1,         1,         0,               0,         0,        -1},
-    {"Gcr-prompter", "gcr-prompter", NULL,         1 << 8,   0,          1,         1,         0,               0,         0,        -1},
+    {"confirm", NULL, NULL,                        ~0,       0,          1,         1,         0,               0,         0,        -1},
+    {"dialog", NULL, NULL,                         ~0,       0,          1,         1,         0,               0,         0,        -1},
+    {"download", NULL, NULL,                       ~0,       0,          1,         1,         0,               0,         0,        -1},
+    {"error", NULL, NULL,                          ~0,       0,          1,         1,         0,               0,         0,        -1},
+    {"MPlayer", NULL, NULL,                        ~0,       0,          1,         1,         0,               0,         0,        -1},
+    {"splash", NULL, NULL,                         ~0,       0,          1,         1,         0,               0,         0,        -1},
+    {"toolbar", NULL, NULL,                        ~0,       0,          1,         1,         0,               0,         0,        -1},
+    {"notification", NULL, NULL,                   ~0,       0,          1,         1,         0,               0,         0,        -1},
+    {"pinentry-gtk-2", NULL, NULL,                 ~0,       0,          1,         1,         0,               0,         0,        -1},
+    {"file_progress", NULL, NULL,                  ~0,       0,          1,         1,         0,               0,         0,        -1},
+    {"Gcr-prompter", "gcr-prompter", NULL,         ~0,       0,          1,         1,         0,               0,         0,        -1},
 };
 
 /* layout(s) */
@@ -128,7 +117,6 @@ static const Layout layouts[] = {
 /* static Key keys[] = { */
 /* modifier           key             function          argument */
 /* { Mod4Mask|ShiftMask,   XK_Return,      spawn,            {.v = st } }, */
-/* { Mod4Mask,             XK_backslash,   togglescratch,    {.ui = 0 } }, */
 /* { Mod4Mask,             XK_t,           togglefloating,   {0} }, */
 /* { Mod4Mask|ShiftMask,   XK_space,       togglebar,        {0} }, */
 /* { Mod4Mask,             XK_Tab,         focusstack,       {.i = +1 } }, */
@@ -203,7 +191,6 @@ static Signal signals[] = {
     {"tagex",          tagex},
     {"toggletag",      tag},
     {"toggletagex",    toggletagex},
-    {"togglescratch",  togglescratch},
     {"killclient",     killclient},
     {"setlayout",      setlayout},
     {"setlayoutex",    setlayoutex},
