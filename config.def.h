@@ -42,10 +42,10 @@ typedef struct {
   const char *name;
   const void *cmd;
 } Sp;
-const char *sp1[] = {"st", "-c", "stscratchpad", NULL};
+const char *sp1[] = {"st", "-n", "stscratchpad", NULL};
 static Sp scratchpads[] = {
     /* name          cmd  */
-    {"st", sp1},
+    {"stscratchpad", sp1},
 };
 
 /* swallow emacs */
@@ -63,8 +63,8 @@ static const Rule rules[] = {
 /*   class               instance            title tag mask  switchtotag iscentered isfloating isfakefullscreen isterminal noswallow mon*/
     {"ncmpcpp",          NULL,               NULL, 0,        0,          1,         1,         0,               0,         1,        -1},
     {"pulsemixer",       NULL,               NULL, 0,        0,          1,         1,         0,               0,         1,        -1},
-    {"st",               NULL,               NULL, 1 << 2,   1,          1,         0,         0,               1,         0,        -1},
-    {"stscratchpad",     NULL,               NULL, SPTAG(0), 0,          1,         0,         0,               1,         0,        -1},
+    /* {"st",               NULL,               NULL, 1 << 2,   1,          1,         0,         0,               1,         0,        -1}, */
+    {NULL,               "stscratchpad",     NULL, SPTAG(0), 0,          1,         0,         0,               1,         0,        -1},
     {"mpv",              "gl",               NULL, 1 << 4,   1,          1,         0,         0,               0,         0,        -1},
     {"Gimp",             "gimp",             NULL, 1 << 6,   1,          0,         0,         0,               0,         0,        -1},
     {"Emacs",            "emacs",            NULL, 1 << 3,   1,          0,         0,         0,               0,         1,        -1},
