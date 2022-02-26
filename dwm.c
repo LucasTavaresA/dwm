@@ -55,7 +55,7 @@
 #define INTERSECT(x, y, w, h, m)                                               \
   (MAX(0, MIN((x) + (w), (m)->wx + (m)->ww) - MAX((x), (m)->wx)) *             \
    MAX(0, MIN((y) + (h), (m)->wy + (m)->wh) - MAX((y), (m)->wy)))
-#define ISVISIBLE(C) ((C->tags & C->mon->tagset[C->mon->seltags]))
+#define ISVISIBLE(C) ((C->tags & C->mon->tagset[C->mon->seltags]) || C->issticky)
 #define LENGTH(X) (sizeof X / sizeof X[0])
 #define MOUSEMASK (BUTTONMASK | PointerMotionMask)
 #define WIDTH(X) ((X)->w + 2 * (X)->bw)
@@ -116,7 +116,7 @@ struct Client {
   unsigned int tags;
 	unsigned int switchtotag;
   int isfixed, iscentered, isfloating, isurgent, neverfocus, oldstate,
-      isfullscreen, isfakefullscreen, isterminal, noswallow;
+      isfullscreen, isfakefullscreen, isterminal, noswallow, issticky;
   pid_t pid;
   Client *next;
   Client *snext;
@@ -173,6 +173,7 @@ typedef struct {
   unsigned int tags;
 	unsigned int switchtotag;
   int iscentered;
+  int issticky;
   int isfloating;
   int isfakefullscreen;
   int isterminal;
@@ -275,6 +276,7 @@ static void tagtoprev(const Arg *arg);
 static void togglebar(const Arg *arg);
 static void holdbar(const Arg *arg);
 static void togglefloating(const Arg *arg);
+static void togglesticky(const Arg *arg);
 static void toggletag(const Arg *arg);
 static void toggleview(const Arg *arg);
 static void unfocus(Client *c, int setfocus);
@@ -426,6 +428,7 @@ void applyrules(Client *c) {
 
   /* rule matching */
   c->iscentered = 0;
+  c->issticky = 0;
   c->isfloating = 0;
   c->tags = 0;
   XGetClassHint(dpy, c->win, &ch);
@@ -438,6 +441,7 @@ void applyrules(Client *c) {
         (!r->class || strstr(class, r->class)) &&
         (!r->instance || strstr(instance, r->instance))) {
       c->iscentered = r->iscentered;
+      c->issticky = r->issticky;
       c->isfloating = r->isfloating;
       c->isfakefullscreen = r->isfakefullscreen;
       c->isterminal = r->isterminal;
@@ -2380,6 +2384,15 @@ void togglefloating(const Arg *arg) {
   arrange(selmon);
 }
 
+void
+togglesticky(const Arg *arg)
+{
+	if (!selmon->sel)
+		return;
+	selmon->sel->issticky = !selmon->sel->issticky;
+	arrange(selmon);
+}
+
 void toggletag(const Arg *arg) {
   unsigned int newtags;
 
@@ -2821,6 +2834,7 @@ void updatewindowtype(Client *c) {
     setfullscreen(c, 1);
   if (wtype == netatom[NetWMWindowTypeDialog]) {
     c->iscentered = 1;
+    c->issticky = 1;
     c->isfloating = 1;
   }
 }

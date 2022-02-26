@@ -45,7 +45,7 @@ patch -R < exemplo.diff
 
 - Swallow compatível com o emacsclient ([[https://www.reddit.com/r/suckless/comments/g4d1rb/dwm_on_swallowing_nonchild_processes_namely_emacs/][swallowemacsclient]])
 
-- Troca janela ou foca tags adjecentes ([[https://dwm.suckless.org/patches/adjacenttag/][adjacenttags]])
+- Troca janela ou foca tags adjacentes ([[https://dwm.suckless.org/patches/adjacenttag/][adjacenttags]])
 
 - ([[https://dwm.suckless.org/patches/systray/][systray]])
 
@@ -60,3 +60,5 @@ patch -R < exemplo.diff
 - Divide status em dois posicionando uma parte no meio da tela ([[https://dwm.suckless.org/patches/splitstatus/][splitstatus]]) *Modificado para dividir a barra em tres*
 
 - Segue programas para a tag onde abrem ([[https://dwm.suckless.org/patches/switchtotag/][switchtotag]])
+
+- Regra que fixa janela a todas a tags abertas ([[https://dwm.suckless.org/patches/sticky/][sticky]])
