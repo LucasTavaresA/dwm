@@ -3,7 +3,7 @@
 /* appearance */
 static const unsigned int borderpx = 1; /* border pixel of windows */
 static const unsigned int snap = 32;    /* snap pixel */
-static const int showbar = 1;           /* 0 means no bar */
+static const int showbar = 0;           /* 0 means no bar */
 static const int topbar = 1;            /* 0 means bottom bar */
 static const int splitstatus = 1;       /* 1 for split status items */
 static const char *fsplitdelim = ";";   /* First character used for separating status */
@@ -51,22 +51,24 @@ static const Rule rules[] = {
      *	WM_NAME(STRING) = title
      */
 /*   class               instance            title tag mask  switchtotag iscentered issticky isfloating isfakefullscreen isterminal noswallow mon*/
-    {"ncmpcpp",          NULL,               NULL, 0,        0,          1,         0,       1,         0,               0,         1,        -1},
-    {"pulsemixer",       NULL,               NULL, 0,        0,          1,         0,       1,         0,               0,         1,        -1},
+    {"ncmpcpp",          "ncmpcpp",          "ncmpcpp",0,    0,          1,         1,       1,         0,               0,         0,        -1},
+    {"pulsemixer",       "pulsemixer",       "pulsemixer",0, 0,          1,         1,       1,         0,               0,         0,        -1},
     {"MEGAsync",         "megasync",         NULL, 0,        0,          1,         0,       1,         0,               0,         0,        -1},
     {"Transmission-gtk", "transmission-gtk", NULL, 0,        0,          1,         0,       1,         0,               0,         0,        -1},
+    {"Galculator",       "galculator",       NULL, 0,        0,          1,         1,       1,         0,               0,         0,        -1},
+    {"st",               "st",               "st", 0,        0,          1,         1,       0,         0,               1,         0,        -1},
+    {"htop",             "htop",             "htop",0,       0,          1,         1,       1,         0,               1,         0,        -1},
+    {"mpv",              "gl",               NULL, 1 << 1,   1,          1,         0,       0,         0,               0,         0,        -1},
     {"firefox",          "Places",           NULL, 1 << 2,   1,          1,         0,       1,         1,               0,         0,        -1},
     {"Firefox",          NULL,               NULL, 1 << 2,   1,          0,         0,       0,         1,               0,         0,        -1},
     {"firefox",          "Devtools",         NULL, 1 << 2,   1,          1,         0,       1,         1,               0,         0,        -1},
     {"firefox",          "Navigator",        NULL, 1 << 2,   1,          0,         0,       0,         1,               0,         0,        -1},
     {"qutebrowser",      "qutebrowser",      NULL, 1 << 2,   1,          0,         0,       0,         1,               0,         0,        -1},
     {"Emacs",            "emacs",            NULL, 1 << 3,   1,          0,         0,       0,         0,               0,         1,        -1},
-    {"mpv",              "gl",               NULL, 1 << 1,   1,          1,         0,       0,         0,               0,         0,        -1},
+    {"nvim",             "nvim",             "nvim",1 << 3,  1,          1,         0,       0,         0,               1,         0,        -1},
+    {"Gimp",             "gimp",             NULL, 1 << 4,   1,          0,         0,       0,         0,               0,         0,        -1},
     {"discord",          "discord",          NULL, 1 << 5,   1,          1,         0,       0,         1,               0,         0,        -1},
     {"TelegramDesktop",  "telegram-desktop", NULL, 1 << 5,   1,          1,         0,       0,         1,               0,         0,        -1},
-    {"Gimp",             "gimp",             NULL, 1 << 4,   1,          0,         0,       0,         0,               0,         0,        -1},
-    {"st",               "st",               NULL, 0,        0,          1,         1,       0,         0,               1,         0,        -1},
-    {"Galculator",       "galculator",       NULL, 0,        0,          1,         1,       1,         0,               0,         0,        -1},
     /* Notificações, popups, etc. */
     {"confirm",          NULL,               NULL, 0,        0,          1,         1,       1,         0,               0,         0,        -1},
     {"dialog",           NULL,               NULL, 0,        0,          1,         1,       1,         0,               0,         0,        -1},
