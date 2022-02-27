@@ -29,7 +29,7 @@ patch -R < exemplo.diff
 
 - Borda vermelha em janelas urgentes ([[https://dwm.suckless.org/patches/urgentborder/][urgentborder]])
 
-- Diferentes layouts para cada tag ([[https://dwm.suckless.org/patches/pertag/][pertag]])
+- Diferentes layouts para cada tag ([[https://dwm.suckless.org/patches/pertag/][pertag]]) *Modificado para não guardar posição da barra por tag*
 
 - Programas abertos pelo terminal tomam o lugar do mesmo ate serem fechados ([[https://dwm.suckless.org/patches/swallow/][swallow]])
 
@@ -57,7 +57,7 @@ patch -R < exemplo.diff
 
 - Removido titulo da janela aberta ([[https://dwm.suckless.org/patches/notitle/][notitle]])
 
-- Divide status em dois posicionando uma parte no meio da tela ([[https://dwm.suckless.org/patches/splitstatus/][splitstatus]]) *Modificado para dividir a barra em tres*
+- Divide status em dois posicionando uma parte no meio da tela ([[https://dwm.suckless.org/patches/splitstatus/][splitstatus]]) *Modificado*
 
 - Segue programas para a tag onde abrem ([[https://dwm.suckless.org/patches/switchtotag/][switchtotag]])
 

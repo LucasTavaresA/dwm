@@ -43,7 +43,7 @@ static const char emacsclient[] = "emacsclient";
 static const char emacsname[] = "emacs@";
 
 /* tagging */
-static const char *tags[] = {"", "", "", "", "", "", ""};
+static const char *tags[] = {"", "", "", "", "", "", ""};
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -58,17 +58,17 @@ static const Rule rules[] = {
     {"Galculator",       "galculator",       NULL, 0,        0,          1,         1,       1,         0,               0,         0,        -1},
     {"st",               "st",               "st", 0,        0,          1,         1,       0,         0,               1,         0,        -1},
     {"htop",             "htop",             "htop",0,       0,          1,         1,       1,         0,               1,         0,        -1},
-    {"mpv",              "gl",               NULL, 1 << 1,   1,          1,         0,       0,         0,               0,         0,        -1},
-    {"firefox",          "Places",           NULL, 1 << 2,   1,          1,         0,       1,         1,               0,         0,        -1},
-    {"Firefox",          NULL,               NULL, 1 << 2,   1,          0,         0,       0,         1,               0,         0,        -1},
-    {"firefox",          "Devtools",         NULL, 1 << 2,   1,          1,         0,       1,         1,               0,         0,        -1},
-    {"firefox",          "Navigator",        NULL, 1 << 2,   1,          0,         0,       0,         1,               0,         0,        -1},
-    {"qutebrowser",      "qutebrowser",      NULL, 1 << 2,   1,          0,         0,       0,         1,               0,         0,        -1},
-    {"Emacs",            "emacs",            NULL, 1 << 3,   1,          0,         0,       0,         0,               0,         1,        -1},
-    {"nvim",             "nvim",             "nvim",1 << 3,  1,          1,         0,       0,         0,               1,         0,        -1},
-    {"Gimp",             "gimp",             NULL, 1 << 4,   1,          0,         0,       0,         0,               0,         0,        -1},
-    {"discord",          "discord",          NULL, 1 << 5,   1,          1,         0,       0,         1,               0,         0,        -1},
-    {"TelegramDesktop",  "telegram-desktop", NULL, 1 << 5,   1,          1,         0,       0,         1,               0,         0,        -1},
+    {"firefox",          "Places",           NULL, 1 << 0,   1,          1,         0,       1,         1,               0,         0,        -1},
+    {"Firefox",          NULL,               NULL, 1 << 0,   1,          0,         0,       0,         1,               0,         0,        -1},
+    {"firefox",          "Devtools",         NULL, 1 << 0,   1,          1,         0,       1,         1,               0,         0,        -1},
+    {"firefox",          "Navigator",        NULL, 1 << 0,   1,          0,         0,       0,         1,               0,         0,        -1},
+    {"qutebrowser",      "qutebrowser",      NULL, 1 << 0,   1,          0,         0,       0,         1,               0,         0,        -1},
+    {"Emacs",            "emacs",            NULL, 1 << 1,   1,          0,         0,       0,         0,               0,         1,        -1},
+    {"nvim",             "nvim",             "nvim",1 << 1,  1,          1,         0,       0,         0,               1,         0,        -1},
+    {"mpv",              "gl",               NULL, 1 << 2,   1,          1,         0,       0,         0,               0,         0,        -1},
+    {"Gimp",             "gimp",             NULL, 1 << 3,   1,          0,         0,       0,         0,               0,         0,        -1},
+    {"discord",          "discord",          NULL, 1 << 4,   1,          1,         0,       0,         1,               0,         0,        -1},
+    {"TelegramDesktop",  "telegram-desktop", NULL, 1 << 4,   1,          1,         0,       0,         1,               0,         0,        -1},
     /* Notificações, popups, etc. */
     {"confirm",          NULL,               NULL, 0,        0,          1,         1,       1,         0,               0,         0,        -1},
     {"dialog",           NULL,               NULL, 0,        0,          1,         1,       1,         0,               0,         0,        -1},
