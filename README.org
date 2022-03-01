@@ -57,10 +57,10 @@ patch -R < exemplo.diff
 
 - Removido titulo da janela aberta ([[https://dwm.suckless.org/patches/notitle/][notitle]])
 
-- Divide status em dois posicionando uma parte no meio da tela ([[https://dwm.suckless.org/patches/splitstatus/][splitstatus]]) *Modificado*
+- Divide status em dois posicionando uma parte no meio da tela ([[https://dwm.suckless.org/patches/splitstatus/][splitstatus]])
 
 - Segue programas para a tag onde abrem ([[https://dwm.suckless.org/patches/switchtotag/][switchtotag]])
 
-- Regra que fixa janela a todas a tags abertas ([[https://dwm.suckless.org/patches/sticky/][sticky]])
+- Fixa janela a todas a tags abertas ([[https://dwm.suckless.org/patches/sticky/][sticky]]) *Modificado para ser usado como uma regra*
 
 - Troca as posições da janelas mantendo o foco na mesma posição ([[https://dwm.suckless.org/patches/inplacerotate/][inplacerotate]])
