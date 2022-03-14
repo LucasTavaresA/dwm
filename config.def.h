@@ -29,7 +29,7 @@ static const char col_white[] = "#FFFFFF";
 static const char col_red[]   = "#FF0000";
 static const char *colors[][3] = {
                      /* fg         bg         border */
-    [SchemeNorm]     = {col_white, col_moonlight, col_moonlight  },
+    [SchemeNorm]     = {col_white, col_moonlight, col_black  },
     [SchemeSel]      = {col_white, col_white, col_white  },
     [SchemeUrg]      = {col_red,   col_red,   col_red    },
 	[SchemeStatus]   = {col_white, col_black, "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
