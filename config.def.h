@@ -64,7 +64,7 @@ static const Rule rules[] = {
     {"firefox",          "Navigator",        NULL, 1 << 0,   1,          0,         0,       0,         1,               0,         0,        -1},
     {"qutebrowser",      "qutebrowser",      NULL, 1 << 0,   1,          0,         0,       0,         1,               0,         0,        -1},
     {"Emacs",            "emacs",            NULL, 1 << 1,   1,          0,         0,       0,         0,               0,         1,        -1},
-    {"st",               "st",               "st", 1 << 1,   1,          1,         0,       0,         0,               1,         0,        -1},
+    {"st-256color",      "st-256color",      NULL, 1 << 1,   1,          1,         0,       0,         0,               1,         0,        -1},
     {"nvim",             "nvim",             "nvim",1 << 1,  1,          1,         0,       0,         0,               1,         0,        -1},
     {"mpv",              "gl",               NULL, 1 << 2,   1,          1,         0,       0,         0,               0,         0,        -1},
     {"Gimp",             "gimp",             NULL, 1 << 3,   1,          0,         0,       0,         0,               0,         0,        -1},
