@@ -66,7 +66,7 @@ static const Rule rules[] = {
     {"Emacs",            "emacs",            NULL, 1 << 1,   1,          0,         0,       0,         0,               0,         1,        -1},
     {"st-256color",      "st-256color",      NULL, 1 << 1,   1,          1,         0,       0,         0,               1,         0,        -1},
     {"nvim",             "nvim",             "nvim",1 << 1,  1,          1,         0,       0,         0,               1,         0,        -1},
-    {"mpv",              "gl",               NULL, 1 << 2,   1,          1,         0,       0,         0,               0,         0,        -1},
+    {"mpv",              "gl",               NULL, 1 << 2,   1,          1,         0,       0,         0,               0,         1,        -1},
     {"Gimp",             "gimp",             NULL, 1 << 3,   1,          0,         0,       0,         0,               0,         0,        -1},
     {"discord",          "discord",          NULL, 1 << 4,   1,          1,         0,       0,         1,               0,         0,        -1},
     {"TelegramDesktop",  "telegram-desktop", NULL, 1 << 4,   1,          1,         0,       0,         1,               0,         0,        -1},
