@@ -13,7 +13,7 @@ static const unsigned int systrayonleft = 0;   /* 0: systray in the right corner
 static const unsigned int systrayspacing = 0;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray = 1;     /* 0 means no systray */
-static const int user_bh = 16; /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
+static const int user_bh = 20; /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const int swallowfloating = 0; /* 1 means swallow floating windows by default */
 static const int focusonwheel = 0;
 static const char *fonts[] = {
