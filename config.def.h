@@ -70,6 +70,7 @@ static const Rule rules[] = {
     {"Gimp",             "gimp",             NULL, 1 << 3,   1,          0,         0,       0,         0,               0,         0,        -1},
     {"discord",          "discord",          NULL, 1 << 4,   1,          1,         0,       0,         1,               0,         0,        -1},
     {"TelegramDesktop",  "telegram-desktop", NULL, 1 << 4,   1,          1,         0,       0,         1,               0,         0,        -1},
+    {"Xephyr",           "Xephyr",           NULL, 1 << 6,   1,          1,         0,       0,         0,               0,         1,        -1},
     /* Notificações, popups, etc. */
     {"confirm",          NULL,               NULL, 0,        0,          1,         1,       1,         0,               0,         0,        -1},
     {"dialog",           NULL,               NULL, 0,        0,          1,         1,       1,         0,               0,         0,        -1},
