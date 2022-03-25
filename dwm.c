@@ -213,7 +213,7 @@ static void drawbars(void);
 static void expose(XEvent *e);
 static void focus(Client *c);
 static void focusin(XEvent *e);
-static void focusmon(const Arg *arg);
+/* static void focusmon(const Arg *arg); */
 static void focusstack(const Arg *arg);
 static Atom getatomprop(Client *c, Atom prop);
 static int getrootptr(int *x, int *y);
@@ -221,11 +221,11 @@ static long getstate(Window w);
 static unsigned int getsystraywidth();
 static int gettextprop(Window w, Atom atom, char *text, unsigned int size);
 static void grabbuttons(Client *c, int focused);
-static void grabkeys(void);
-static void incnmaster(const Arg *arg);
+/* static void grabkeys(void); */
+/* static void incnmaster(const Arg *arg); */
 static void inplacerotate(const Arg *arg);
-static void keypress(XEvent *e);
-static void keyrelease(XEvent *e);
+/* static void keypress(XEvent *e); */
+/* static void keyrelease(XEvent *e); */
 static void killclient(const Arg *arg);
 static void manage(Window w, XWindowAttributes *wa);
 static void mappingnotify(XEvent *e);
@@ -265,15 +265,15 @@ static void sigchld(int unused);
 static void sighup(int unused);
 static void quit(const Arg *arg);
 static void sigterm(int unused);
-static void spawn(const Arg *arg);
+/* static void spawn(const Arg *arg); */
 static Monitor *systraytomon(Monitor *m);
 static void tag(const Arg *arg);
-static void tagmon(const Arg *arg);
+/* static void tagmon(const Arg *arg); */
 static void tile(Monitor *);
 static void tagtonext(const Arg *arg);
 static void tagtoprev(const Arg *arg);
 static void togglebar(const Arg *arg);
-static void holdbar(const Arg *arg);
+/* static void holdbar(const Arg *arg); */
 static void togglefloating(const Arg *arg);
 static void togglesticky(const Arg *arg);
 static void toggletag(const Arg *arg);
@@ -777,6 +777,7 @@ void cleanup(void) {
     drw_cur_free(drw, cursor[i]);
   for (i = 0; i < LENGTH(colors); i++)
     free(scheme[i]);
+  free(scheme);
   XDestroyWindow(dpy, wmcheckwin);
   drw_free(drw);
   XSync(dpy, False);
@@ -1166,19 +1167,19 @@ void focusin(XEvent *e) {
     setfocus(selmon->sel);
 }
 
-void
-focusmon(const Arg *arg)
-{
-	Monitor *m;
+/* void */
+/* focusmon(const Arg *arg) */
+/* { */
+/* 	Monitor *m; */
 
-	if (!mons->next)
-		return;
-	if ((m = dirtomon(arg->i)) == selmon)
-		return;
-	unfocus(selmon->sel, 0);
-	selmon = m;
-	focus(NULL);
-}
+/* 	if (!mons->next) */
+/* 		return; */
+/* 	if ((m = dirtomon(arg->i)) == selmon) */
+/* 		return; */
+/* 	unfocus(selmon->sel, 0); */
+/* 	selmon = m; */
+/* 	focus(NULL); */
+/* } */
 
 void focusstack(const Arg *arg) {
   Client *c = NULL, *i;
@@ -1327,12 +1328,12 @@ void grabbuttons(Client *c, int focused) {
 	/* } */
 /* } */
 
-void
-incnmaster(const Arg *arg)
-{
-	selmon->nmaster = MAX(selmon->nmaster + arg->i, 0);
-	arrange(selmon);
-}
+/* void */
+/* incnmaster(const Arg *arg) */
+/* { */
+/* 	selmon->nmaster = MAX(selmon->nmaster + arg->i, 0); */
+/* 	arrange(selmon); */
+/* } */
 
 #ifdef XINERAMA
 static int isuniquegeom(XineramaScreenInfo *unique, size_t n,
@@ -1483,7 +1484,7 @@ void manage(Window w, XWindowAttributes *wa) {
                    StructureNotifyMask);
   grabbuttons(c, 0);
   if (!c->isfloating)
-    c->isfloating = c->oldstate = trans != None || c->isfixed;
+    c->isfloating = c->oldstate = t || c->isfixed;
   if (c->isfloating)
     XRaiseWindow(dpy, c->win);
   attach(c);
@@ -2220,17 +2221,17 @@ void sigterm(int unused) {
   quit(&a);
 }
 
-void spawn(const Arg *arg) {
-  if (fork() == 0) {
-    if (dpy)
-      close(ConnectionNumber(dpy));
-    setsid();
-    execvp(((char **)arg->v)[0], (char **)arg->v);
-    fprintf(stderr, "dwm: execvp %s", ((char **)arg->v)[0]);
-    perror(" failed");
-    exit(EXIT_SUCCESS);
-  }
-}
+/* void spawn(const Arg *arg) { */
+/*   if (fork() == 0) { */
+/*     if (dpy) */
+/*       close(ConnectionNumber(dpy)); */
+/*     setsid(); */
+/*     execvp(((char **)arg->v)[0], (char **)arg->v); */
+/*     fprintf(stderr, "dwm: execvp %s", ((char **)arg->v)[0]); */
+/*     perror(" failed"); */
+/*     exit(EXIT_SUCCESS); */
+/*   } */
+/* } */
 
 void tag(const Arg *arg) {
   if (selmon->sel && arg->ui & TAGMASK) {

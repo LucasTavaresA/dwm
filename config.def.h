@@ -44,6 +44,7 @@ static const char emacsclient[] = "emacsclient";
 static const char emacsname[] = "emacs@";
 
 /* tagging */
+/*                            0    1    2    3    4    5    6    */
 static const char *tags[] = {"", "", "", "", "", "", ""};
 
 static const Rule rules[] = {
