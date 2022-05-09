@@ -17,11 +17,11 @@ static const int user_bh = 20; /* 0 means that dwm will calculate bar height, >=
 static const int swallowfloating = 0; /* 1 means swallow floating windows by default */
 static const int focusonwheel = 0;
 static const char *fonts[] = {
-    "Fira Code:pixelsize=16:antialias=true:autohint=true",
+    "Terminus:pixelsize=18:antialias=true:autohint=true",
     "SauceCodePro Nerd Font:size=12",
     "Monospace:size=12:antialias=true:hinting=true"
 };
-static const char dmenufont[] = "Fira Code:pixelsize=14:antialias=true:autohint=true";
+static const char dmenufont[] = "Terminus:pixelsize=18:antialias=true:autohint=true";
 static const char col_black[] = "#000000";
 static const char col_grey[]  = "#444444";
 static const char col_moonlight[] = "#2f334d";
