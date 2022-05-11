@@ -1,6 +1,6 @@
 * Minha build do dwm
 
-*Controlada usando a minha configuração do [[https://github.com/LucasTavaresA/dotfiles/blob/main/.config/sxhkd/sxhkdrc][sxhkd]]*
+*Controlada usando a minha configuração do [[https://github.com/LucasTavaresA/dotfiles/blob/main/.config/sxhkd/sxhkd_dwm][sxhkd]]*
 
 *Usando a minha build da barra [[https://github.com/LucasTavaresA/dwmblocks][dwmblocks]]*
 
